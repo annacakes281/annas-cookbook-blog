@@ -1,10 +1,10 @@
 ---
 name: Features
 about: Default template for MoSCoW Prioritisation
-title: FEATURE <PRIORITY>
+title: 'FEATURE: <PRIORITY>'
 labels: ''
 assignees: ''
 
 ---
 
-This feature is a  **priority** and **implementation status** in the project
+This **feature** is a  **priority type** and **MoSCoW** implemented in the project
