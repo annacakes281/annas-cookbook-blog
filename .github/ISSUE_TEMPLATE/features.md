@@ -1,7 +1,7 @@
 ---
 name: Features
 about: Default template for MoSCoW Prioritisation
-title: 'FEATURE: <PRIORITY>'
+title: 'FEATURE: <TITLE>'
 labels: ''
 assignees: ''
 
