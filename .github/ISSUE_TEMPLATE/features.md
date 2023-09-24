@@ -7,4 +7,4 @@ assignees: ''
 
 ---
 
-This **feature** is a  **priority type** and **MoSCoW** implemented in the project
+The **feature** is a  **priority type** and **MoSCoW** implemented/implementation in the project
