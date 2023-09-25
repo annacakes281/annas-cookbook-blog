@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from recipe_site.views import HomePage
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', HomePage, name='homepage'),
 ]
