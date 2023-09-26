@@ -31,7 +31,7 @@ SECRET_KEY = 'SECRET_KEY'
 DEBUG = True
 
 ALLOWED_HOSTS = ['8000-annacakes281-my-cookbook-ygn2p5f2uw.us2.codeanyapp.com', 'localhost',
-                 'https://my-cookbook-website-e503fbfb1e72.herokuapp.com/']
+                 'my-cookbook-website-e503fbfb1e72.herokuapp.com']
 
 
 # Application definition
