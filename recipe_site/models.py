@@ -11,12 +11,11 @@ class Post(models.Model):
     recipe_image = CloudinaryField('image', default='placeholder')
     written_by = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="recipe_posts")
-    edited_on = models.DateTimeField(auto_now=True)  # poss timefield
+    edited_on = models.DateTimeField(auto_now=True) 
     prep_time = models.CharField(max_length=30)  # poss timefield
-    cook_time = models.CharField(max_length=30)
-    ingredients = models.TextField()  # poss display as a list
+    cook_time = models.CharField(max_length=30)  # poss timefield
+    ingredients = models.TextField()  
     recipe_steps = models.TextField()
-    excerpt = models.TextField(blank=True)  # unsure if needed
     posted_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(
