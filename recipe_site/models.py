@@ -14,7 +14,7 @@ class Post(models.Model):
     edited_on = models.DateTimeField(auto_now=True) 
     prep_time = models.CharField(max_length=30)  # poss timefield
     cook_time = models.CharField(max_length=30)  # poss timefield
-    ingredients = models.TextField()  
+    ingredients = models.TextField()
     recipe_steps = models.TextField()
     posted_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
