@@ -8,9 +8,9 @@ STATUS = ((0, "Draft"), (1, "Posted"))
 class Post(models.Model):
     recipe_name = models.CharField(max_length=200, unique=False)
     slug = models.SlugField(max_length=200, unique=False)
-    recipe_image = CloudinaryField('image', default='placeholder')
     written_by = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="recipe_posts")
+    recipe_image = CloudinaryField('image', default='placeholder')
     edited_on = models.DateTimeField(auto_now=True) 
     prep_time = models.CharField(max_length=30)  # poss timefield
     cook_time = models.CharField(max_length=30)  # poss timefield

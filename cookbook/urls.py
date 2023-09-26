@@ -15,11 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-# from recipe_site.views import HomePage
+# from recipe_site.views import HomePage # test homepage
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
     path('', include('recipe_site.urls'), name='recipe_urls'),
-    # path('', HomePage, name='homepage'),
+    # path('', HomePage, name='homepage'), # test homepage
 ]
