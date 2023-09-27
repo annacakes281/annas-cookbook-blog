@@ -1,34 +1,25 @@
-/* doesnt change anything? */
+/* sort into categories */
+
 body {
     background-color: #F9FAFC;
 }
 
 .brand {
     font-family: Montserrat, sans-serif;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: #4A4A4F;
 
 }
 
-.red-o {
-    color: #E84610;
-}
-
-.thin {
-    font-weight: 300;
-}
-
-.light-bg {
-    background-color: #fff;
-}
-
+/* footer */
 .dark-bg {
-    background-color: #445261;
+    background-color: #ac30fa;
 }
 
+/* main background colour  */
 .main-bg {
-    background-color: #F9FAFC;
+    background-color: #f2ebf2;
 }
 
 .card {
@@ -45,15 +36,18 @@ body {
     bottom: 5%;
     min-width: 30%;
     left: -2px;
-    background-color: #23BBBB;
+    background-color: #784bea;
 }
 
 .author {
     color: white;
     margin: 4px;
     text-transform: uppercase;
+    font-family: Rubik, sans-serif;
+
 }
 
+/* recipe name view */
 .masthead {
     margin-top: 10px;
     overflow: hidden;
@@ -64,8 +58,8 @@ body {
 }
 
 .masthead-text {
-    background-color: #445261;
-    color: white;
+    background-color: #f0cfc3;
+    color: #372c2c;
     position: relative;
 }
 
@@ -81,7 +75,7 @@ body {
     right: 90%;
     height: 100%;
     width: 150%;
-    background: #445261;
+    background: #f0cfc3;
     -webkit-transform: skew(15deg);
     -moz-transform: skew(15deg);
     transform: skew(15deg);
@@ -90,28 +84,33 @@ body {
 
 .post-link {
     text-decoration: none;
-    color: #445261;
+    color: #3d3d45;
+    font-family: Rubix, sans-serif;
 }
 
 .post-link:hover,
 .page-link {
-    color: #E84610;
+    color: #7293ea;
 }
 
 .post-title {
     margin-top: 20%;
     margin-left: 5%;
+    font-family: Rubix, sans-serif;
 }
 
 .post-subtitle {
     margin-left: 5%;
-    color: lightgray;
+    color: #322a4d;
+    font-family: Rubix, sans-serif;
 }
 
+/* need to edit these  */
 .btn-signup {
     background-color: #23BBBB;
     color: #fff;
 }
+
 
 .btn-signup:hover,
 .btn-signup:active {
@@ -159,4 +158,13 @@ body {
 .navbar-text {
     font-family: Poppins, sans-serif;
     font-weight: 300;
+}
+
+nav {
+    background-color: #fff5ff;
+}
+
+.card-body {
+    font-family: Rubix, sans-serif;
+    font-size: larger;
 }

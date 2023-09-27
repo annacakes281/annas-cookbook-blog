@@ -16,7 +16,14 @@
                   src="https://as2.ftcdn.net/v2/jpg/02/65/58/29/1000_F_265582946_D57tH8k6p377flQrhptz93w9bK9CN6AR.jpg"
                 />
                 {% else %}
-                <img class="card-img-top" />
+
+                <img
+                  class="card-img-top"
+                  src=" {{ post.recipe_image.url }}"
+                  height="453"
+                />
+                <!-- still need to fix image display -->
+
                 {% endif %}
                 <div class="image-flash">
                   <p class="author">Author: {{ post.written_by }}</p>
