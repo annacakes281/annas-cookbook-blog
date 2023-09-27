@@ -14,7 +14,7 @@ class PostList(generic.ListView):
     paginate_by = 5  # edit this when testing with more posts
 
 
-class PostDetail(View):
+class ViewRecipe(View):
 
     def get(self, request, slug, *args, **kwargs):
         queryset = Post.objects.filter(status=1)
@@ -26,7 +26,7 @@ class PostDetail(View):
 
         return render(
             request,
-            "post_detail.html",
+            "view_recipe.html",
             {
                 "post": post,
                 "comments": comments,

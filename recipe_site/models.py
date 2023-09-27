@@ -6,8 +6,8 @@ STATUS = ((0, "Draft"), (1, "Posted"))
 
 
 class Post(models.Model):
-    recipe_name = models.CharField(max_length=200, unique=False)
-    slug = models.SlugField(max_length=200, unique=False)
+    recipe_name = models.CharField(max_length=200, unique=True)
+    slug = models.SlugField(max_length=200, unique=True)
     written_by = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="recipe_posts")
     recipe_image = CloudinaryField('image', default='placeholder')
