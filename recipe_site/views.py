@@ -1,4 +1,5 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse
+from django.http import HttpResponseRedirect
 from django.views import generic, View
 from .models import Post
 from .forms import CommentForm
@@ -27,13 +28,13 @@ class ViewRecipe(View):
             {
                 "post": post,
                 "comments": comments,
-                "commented": True, # change to false if have approval
+                "commented": True,  # change to false if have approval
                 "liked": liked,
                 "comment_form": CommentForm()
             },
         )
     # need this whole section when making the other comment parts
-    
+
     def post(self, request, slug, *args, **kwargs):
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
@@ -63,3 +64,16 @@ class ViewRecipe(View):
                 "comment_form": CommentForm()
             },
         )
+
+
+class PostLike(View):
+
+    def post(self, request, slug, *args, **kwargs):
+        post = get_object_or_404(Post, slug=slug)
+
+        if post.likes.filter(id=request.user.id).exists():
+            post.likes.remove(request.user)
+        else:
+            post.likes.add(request.user)
+
+        return HttpResponseRedirect(reverse('view_recipe', args=[slug]))

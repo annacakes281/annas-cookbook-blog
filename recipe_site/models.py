@@ -11,7 +11,7 @@ class Post(models.Model):
     written_by = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="recipe_posts")
     recipe_image = CloudinaryField('image', default='placeholder')
-    edited_on = models.DateTimeField(auto_now=True) 
+    edited_on = models.DateTimeField(auto_now=True)
     prep_time = models.CharField(max_length=30)  # poss timefield
     cook_time = models.CharField(max_length=30)  # poss timefield
     ingredients = models.TextField()
@@ -45,4 +45,4 @@ class Comment(models.Model):
         ordering = ['posted_on']  # may change, Django docs
 
     def __str__(self):
-        return f"Comment {self.body} by {self.name}"
+        return f"Comment {self.comment} by {self.name}"
