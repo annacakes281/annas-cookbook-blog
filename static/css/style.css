@@ -125,7 +125,7 @@ body {
 
 .link:hover,
 .link:active {
-    color: #445261;
+    color: #226ed1;
     text-decoration: underline;
 }
 
@@ -167,4 +167,27 @@ nav {
 .card-body {
     font-family: Rubix, sans-serif;
     font-size: larger;
+}
+
+.btn-login {
+    background-color: #8e49bd;
+    color: #fff;
+}
+
+#loginpage {
+    font-family: Rubik, sans-serif;
+    font-size: 35px;
+}
+
+#login-welcome {
+    font-family: Rubik, sans-serif;
+    font-size: 20px;
+}
+
+#signup-link {
+    color: #c11544;
+}
+
+#signup-link:hover {
+    color: #bb627a;
 }

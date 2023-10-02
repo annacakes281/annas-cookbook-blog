@@ -11,23 +11,28 @@
     <div class="row">
         <div class="col-md-8 mt-3 offset-md-2">
 
-        <h3>{% trans "Sign In" %}</h3>
+        <h2 id="loginpage">{% trans "Sign In" %} <i class="fa-solid fa-right-to-bracket"></i></h2>
 
-<p>{% blocktrans %}Welcome to My Cookbook Blog!
-    No account yet? </p>
-<p>Then please <a href="{{ signup_url }}">create an account</a> first.</p>
-<p>You need this to be able to comment and like on recpies!
+<p id="login-welcome">{% blocktrans %}Welcome to Anna's Cookbook!<br>
+    No account yet?
+    Then please <a href="{{ signup_url }}" id="signup-link">create an account</a> first.<br>
+    You need this to be able to like and comment on recpies!
     <i class="fa-regular fa-face-smile"></i>
-{% endblocktrans %}</p>
+    {% endblocktrans %}</p>
+        </div>
+    </div>
 
-<form class="login" method="POST" action="{% url 'account_login' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
-</form>
+<div class="row">
+    <div class="col-md-8 mt-3 offset-2">
+
+    <form class="login" method="POST" action="{% url 'account_login' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+    {% endif %}
+    <button class="btn btn-login right" type="submit">{% trans "Sign In" %}</button>
+    </form>
         </div>
     </div>
 </div>
