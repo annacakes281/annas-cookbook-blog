@@ -27,7 +27,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'home' %}"><span class="brand">Cookbook</span></a>
+            <a class="navbar-brand" href="{% url 'home' %}"><span class="brand">Anna's Cookbook <i class="fa-solid fa-cookie-bite"></i></span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -41,9 +41,6 @@
                         <a class="nav-link" href="#">Search</a>
                     </li>
                     {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Post Your Own Creation</a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Logout</a>
                     </li>
@@ -63,7 +60,7 @@
         </div>
     </nav>
 
-    <h1 id="logomid">My Cookbook Recipes</h1>
+    <!-- <h1 id="logomid">Anna's Cookbook</h1> -->
 
     <main class="flex-shrink-0 main-bg">
         {% block content %}
@@ -73,7 +70,7 @@
 
     <!-- Footer -->
     <footer class="footer mt-auto py-3 dark-bg">
-        <a href="" class="nav-link"><p class="m-0 text-left text-white">Contact Us <i class="fa-regular fa-envelope"></i></p></a>
+        <a href="" class="nav-link"><p class="m-0 text-left text-white">Contact Me <i class="fa-regular fa-envelope"></i></p></a>
     </footer>
 </body>
 

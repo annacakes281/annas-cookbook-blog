@@ -2,10 +2,6 @@ from django.shortcuts import render, get_object_or_404
 from django.views import generic, View
 from .models import Post
 
-# test home page
-# def HomePage(request):
-#     return render(request, 'homepage.html')
-
 
 class PostList(generic.ListView):
     model = Post
