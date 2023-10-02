@@ -106,28 +106,6 @@ body {
 }
 
 /* need to edit these  */
-.btn-signup {
-    background-color: #23BBBB;
-    color: #fff;
-}
-
-
-.btn-signup:hover,
-.btn-signup:active {
-    background-color: #fff;
-    color: #23BBBB;
-}
-
-.link {
-    color: #23BBBB;
-    text-decoration: none;
-}
-
-.link:hover,
-.link:active {
-    color: #226ed1;
-    text-decoration: underline;
-}
 
 .btn-like {
     color: #E84610;
@@ -169,25 +147,36 @@ nav {
     font-size: larger;
 }
 
-.btn-login {
+.btn-login,
+.btn-logoff,
+.btn-signup {
     background-color: #8e49bd;
     color: #fff;
 }
 
-#loginpage {
+.btn-signup:hover,
+.btn-signup:active {
+    background-color: #a69bde;
+    color: #141313;
+}
+
+.accounts-page {
     font-family: Rubik, sans-serif;
     font-size: 35px;
 }
 
-#login-welcome {
+.welcome-msg {
     font-family: Rubik, sans-serif;
     font-size: 20px;
 }
 
-#signup-link {
+.accounts-link {
     color: #c11544;
+    text-decoration: none;
 }
 
-#signup-link:hover {
+.accounts-link:hover,
+.accounts-link:active {
     color: #bb627a;
+    text-decoration: underline;
 }

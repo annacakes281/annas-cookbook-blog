@@ -11,11 +11,11 @@
     <div class="row">
         <div class="col-md-8 mt-3 offset-md-2">
 
-        <h2 id="loginpage">{% trans "Sign In" %} <i class="fa-solid fa-right-to-bracket"></i></h2>
+        <h2 class="accounts-page">{% trans "Sign In" %} <i class="fa-solid fa-right-to-bracket"></i></h2>
 
-<p id="login-welcome">{% blocktrans %}Welcome to Anna's Cookbook!<br>
+<p class="welcome-msg">{% blocktrans %}Welcome to Anna's Cookbook!<br>
     No account yet?
-    Then please <a href="{{ signup_url }}" id="signup-link">create an account</a> first.<br>
+    Then please <a href="{{ signup_url }}" class="accounts-link">create an account</a> first.<br>
     You need this to be able to like and comment on recpies!
     <i class="fa-regular fa-face-smile"></i>
     {% endblocktrans %}</p>
@@ -31,7 +31,7 @@
     {% if redirect_field_value %}
     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
     {% endif %}
-    <button class="btn btn-login right" type="submit">{% trans "Sign In" %}</button>
+    <button class="btn btn-login" type="submit">{% trans "Sign In" %}</button>
     </form>
         </div>
     </div>
