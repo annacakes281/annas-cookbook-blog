@@ -36,6 +36,8 @@ DEBUG = True
 ALLOWED_HOSTS = ['8000-annacakes281-my-cookbook-ygn2p5f2uw.us2.codeanyapp.com', 'localhost',
                  'my-cookbook-website-e503fbfb1e72.herokuapp.com']
 
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+
 
 # Application definition
 
@@ -45,6 +47,10 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
@@ -54,6 +60,9 @@ INSTALLED_APPS = [
 
 SITE_ID = 1
 
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -62,6 +71,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'cookbook.urls'
