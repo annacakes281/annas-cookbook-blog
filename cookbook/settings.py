@@ -30,7 +30,8 @@ SECRET_KEY = 'SECRET_KEY'
 X_FRAME_OPTIONS = "SAMEORIGIN"  # Needed for Summernote to run in deployment
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = os.environ.get('DEBUG', False)
 
 ALLOWED_HOSTS = ['8000-annacakes281-my-cookbook-ygn2p5f2uw.us2.codeanyapp.com', 'localhost',
                  'my-cookbook-website-e503fbfb1e72.herokuapp.com']
