@@ -31,12 +31,11 @@ SECRET_KEY = 'SECRET_KEY'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
-DEBUG = os.environ.get('DEBUG', False)
+DEBUG = os.environ.get('DEBUG', False)  # add back in after
 
 ALLOWED_HOSTS = ['8000-annacakes281-my-cookbook-ygn2p5f2uw.us2.codeanyapp.com', 'localhost',
                  'my-cookbook-website-e503fbfb1e72.herokuapp.com']
 
-SITE_ID = 1
 
 # Application definition
 
@@ -49,9 +48,11 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
-    # 'django_summernote',
+    'django_summernote',
     'recipe_site',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
