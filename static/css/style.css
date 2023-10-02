@@ -160,6 +160,10 @@ nav {
     color: #141313;
 }
 
+.btn-submit {
+    background-color: #cc7edb;
+}
+
 .accounts-page {
     font-family: Rubik, sans-serif;
     font-size: 35px;
@@ -179,4 +183,8 @@ nav {
 .accounts-link:active {
     color: #bb627a;
     text-decoration: underline;
+}
+
+.comment-sect {
+    font-family: Rubik, sans-serif;
 }
