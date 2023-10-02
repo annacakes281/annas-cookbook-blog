@@ -27,6 +27,8 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'SECRET_KEY'
 
+X_FRAME_OPTIONS = "SAMEORIGIN"  # Needed for Summernote to run in deployment
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
