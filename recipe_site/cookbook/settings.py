@@ -27,11 +27,11 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'SECRET_KEY'
 
-# X_FRAME_OPTIONS = "SAMEORIGIN"  # Needed for Summernote to run in deployment
+X_FRAME_OPTIONS = "SAMEORIGIN"  # Needed for Summernote to run in deployment
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG = os.environ.get('DEBUG', False)  # add back in after
+DEBUG = True
+# DEBUG = os.environ.get('DEBUG', False)  # add back in after
 
 ALLOWED_HOSTS = ['8000-annacakes281-my-cookbook-ygn2p5f2uw.us2.codeanyapp.com', 'localhost',
                  'my-cookbook-website-e503fbfb1e72.herokuapp.com']
@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
-    # 'django_summernote',
+    'django_summernote',
     'recipe_site',
 ]
 
