@@ -194,3 +194,9 @@ nav {
     width: 75%;
     margin-left: 13%;
 }
+
+.recipe-headings {
+    font-family: Indie Flower, cursive, sans-serif;
+    font-weight: bolder;
+    font-size: 23px;
+}

@@ -12,6 +12,7 @@ class Post(models.Model):
         User, on_delete=models.CASCADE, related_name="recipe_posts")
     recipe_image = CloudinaryField('image', default='placeholder')
     edited_on = models.DateTimeField(auto_now=True)
+    excerpt = models.TextField(blank=True)
     prep_time = models.CharField(max_length=30)
     cook_time = models.CharField(max_length=30)
     ingredients = models.TextField()

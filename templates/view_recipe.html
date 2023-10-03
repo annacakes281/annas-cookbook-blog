@@ -19,7 +19,7 @@
           width="100%"
         />
         {% else %}
-        <img src=" {{ post.recipe_image.url }}" width="100%" />
+        <img src=" {{ post.recipe_image.url }}" width="100%" height="50%" />
         {% endif %}
       </div>
     </div>
@@ -32,10 +32,13 @@
       <div class="card-body">
         <!-- The post content goes inside the card-text. -->
         <!-- Use the | safe filter inside the template tags -->
-        <p class="card-text">Prep Time: {{ post.prep_time | safe }}</p>
-        <p class="card-text">Cook Time: {{ post.cook_time | safe }}</p>
-        <p class="card-text">Ingredients: {{ post.ingredients | safe }}</p>
-        <p class="card-text">Steps: {{ post.recipe_steps | safe }}</p>
+        <p class="recipe-headings">About: {{ post.excerpt | safe }}</p>
+        <p class="recipe-headings"><i class="fa-regular fa-clock"></i> Prep Time: {{ post.prep_time | safe }}</p>
+        <p class="recipe-headings"><i class="fa-regular fa-clock"></i> Cook Time: {{ post.cook_time | safe }}</p>
+        <br>
+        <p class="recipe-headings"><i class="fa-solid fa-blender"></i> Ingredients: {{ post.ingredients | safe }}</p>
+        <br>
+        <p class="recipe-headings"><i class="fa-solid fa-shoe-prints"></i> Steps: {{ post.recipe_steps | safe }}</p>
         <div class="row">
           <div class="col-1">
             <strong>
