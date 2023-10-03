@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.http import HttpResponseRedirect
 from django.views import generic, View
-from .models import Post, Contact
-from .forms import CommentForm, TipForm
+from .models import Post, ContactMe
+from .forms import CommentForm, TipForm, ContactMeForm
 
 
 class PostList(generic.ListView):
@@ -10,12 +10,6 @@ class PostList(generic.ListView):
     queryset = Post.objects.filter(status=1).order_by("-posted_on")
     template_name = 'index.html'
     paginate_by = 5  # edit this when testing with more posts
-
-
-class ContactView(generic.ListView):
-    model = Contact
-    template_name = 'contact_form.html'
-
 
 
 class ViewRecipe(View):
@@ -100,3 +94,13 @@ class PostLike(View):
             post.likes.add(request.user)
 
         return HttpResponseRedirect(reverse('view_recipe', args=[slug]))
+
+
+class ContactPage(generic.ListView):
+    model = ContactMe
+    template_name = 'contact_form.html'
+
+
+# class ContactView(View):
+    # still need to add this, just want it functional that it sends off but onto admin panel
+    # can use similar method to the comment tips

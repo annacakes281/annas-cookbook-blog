@@ -108,14 +108,14 @@ body {
 /* need to edit these  */
 
 .btn-like {
-    color: #E84610;
+    color: #e61e95;
     border: none;
     background: transparent;
 }
 
 .btn-like:hover,
 .btn-like:active {
-    color: #E84610;
+    color: #b24f8b;
     background: transparent;
     border: none;
 }
@@ -149,7 +149,8 @@ nav {
 
 .btn-login,
 .btn-logoff,
-.btn-signup {
+.btn-signup,
+.btn-sendidea {
     background-color: #8e49bd;
     color: #fff;
 }
@@ -187,4 +188,9 @@ nav {
 
 .comment-sect {
     font-family: Rubik, sans-serif;
+}
+
+.form-control {
+    width: 75%;
+    margin-left: 13%;
 }

@@ -61,7 +61,7 @@ class Tip(models.Model):
         return f"Tip {self.tip} by {self.name}"
 
 
-class Contact(models.Model):
+class ContactMe(models.Model):
     name = models.CharField(max_length=80)
     email = models.EmailField()
     content = models.TextField()
