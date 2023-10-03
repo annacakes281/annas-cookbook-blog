@@ -12,8 +12,8 @@ class Post(models.Model):
         User, on_delete=models.CASCADE, related_name="recipe_posts")
     recipe_image = CloudinaryField('image', default='placeholder')
     edited_on = models.DateTimeField(auto_now=True)
-    prep_time = models.CharField(max_length=30)  # poss timefield
-    cook_time = models.CharField(max_length=30)  # poss timefield
+    prep_time = models.CharField(max_length=30)
+    cook_time = models.CharField(max_length=30)
     ingredients = models.TextField()
     recipe_steps = models.TextField()
     posted_on = models.DateTimeField(auto_now_add=True)
@@ -30,14 +30,12 @@ class Post(models.Model):
     def number_of_likes(self):
         return self.likes.count()
 
-# draft need to check in live view to edit comment model fields
-
 
 class Comment(models.Model):
     post = models.ForeignKey(
         Post, on_delete=models.CASCADE, related_name="comments")
     name = models.CharField(max_length=80)
-    email = models.EmailField()  # unsure if needed
+    email = models.EmailField()
     comment = models.TextField()
     posted_on = models.DateTimeField(auto_now_add=True)
 
@@ -46,3 +44,18 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"Comment {self.comment} by {self.name}"
+
+
+class Tip(models.Model):
+    post = models.ForeignKey(
+        Post, on_delete=models.CASCADE, related_name="tips")
+    name = models.CharField(max_length=80)
+    email = models.EmailField()
+    tip = models.TextField()
+    posted_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['posted_on']
+
+    def __str__(self):
+        return f"Tip {self.tip} by {self.name}"

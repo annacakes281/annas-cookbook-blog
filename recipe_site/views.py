@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.http import HttpResponseRedirect
 from django.views import generic, View
 from .models import Post
-from .forms import CommentForm
+from .forms import CommentForm, TipForm
 
 
 class PostList(generic.ListView):
@@ -18,6 +18,7 @@ class ViewRecipe(View):
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
         comments = post.comments.order_by('posted_on')
+        tips = post.tips.order_by('posted_on')
         liked = False
         if post.likes.filter(id=self.request.user.id).exists():
             liked = True
@@ -29,16 +30,19 @@ class ViewRecipe(View):
                 "post": post,
                 "comments": comments,
                 "commented": True,  # change to false if have approval
+                "tips": tips,
+                "tipped": True,
                 "liked": liked,
-                "comment_form": CommentForm()
+                "comment_form": CommentForm(),
+                "tip_form": TipForm()
             },
         )
-    # need this whole section when making the other comment parts
 
     def post(self, request, slug, *args, **kwargs):
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
         comments = post.comments.order_by('posted_on')
+        tips = post.tips.order_by('posted_on')
         liked = False
         if post.likes.filter(id=self.request.user.id).exists():
             liked = True
@@ -53,6 +57,16 @@ class ViewRecipe(View):
         else:
             comment_form = CommentForm()
 
+        tip_form = TipForm(data=request.POST)
+        if tip_form.is_valid():
+            tip_form.instance.email = request.user.email
+            tip_form.instance.name = request.user.username
+            tip = tip_form.save(commit=False)
+            tip.post = post
+            tip.save()
+        else:
+            tip_form = TipForm()
+
         return render(
             request,
             "view_recipe.html",
@@ -60,8 +74,11 @@ class ViewRecipe(View):
                 "post": post,
                 "comments": comments,
                 "commented": True,
+                "tips": tips,
+                "tipped": True,
                 "liked": liked,
-                "comment_form": CommentForm()
+                "comment_form": CommentForm(),
+                "tip_form": TipForm()
             },
         )
 
