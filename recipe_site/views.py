@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.http import HttpResponseRedirect
 from django.views import generic, View
-from .models import Post
+from .models import Post, Contact
 from .forms import CommentForm, TipForm
 
 
@@ -10,6 +10,12 @@ class PostList(generic.ListView):
     queryset = Post.objects.filter(status=1).order_by("-posted_on")
     template_name = 'index.html'
     paginate_by = 5  # edit this when testing with more posts
+
+
+class ContactView(generic.ListView):
+    model = Contact
+    template_name = 'contact_form.html'
+
 
 
 class ViewRecipe(View):

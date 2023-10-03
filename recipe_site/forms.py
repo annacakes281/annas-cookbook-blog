@@ -1,4 +1,4 @@
-from .models import Comment, Tip
+from .models import Comment, Tip, Contact
 from django import forms
 
 
@@ -12,3 +12,9 @@ class TipForm(forms.ModelForm):
     class Meta:
         model = Tip
         fields = ('tip',)
+
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = Contact
+        fields = ('name', 'email', 'content',)

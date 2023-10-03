@@ -59,3 +59,9 @@ class Tip(models.Model):
 
     def __str__(self):
         return f"Tip {self.tip} by {self.name}"
+
+
+class Contact(models.Model):
+    name = models.CharField(max_length=80)
+    email = models.EmailField()
+    content = models.TextField()
