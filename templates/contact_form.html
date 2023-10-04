@@ -1,4 +1,14 @@
-{% extends 'base.html' %} {% block content %} {% load crispy_forms_tags %}
+{% extends 'base.html' %} {% block content %}
+
+<head>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("81K-8zDaJ5bEHb6sc");
+        })();
+    </script>
+</head>
 
 <section class="container-fluid card-body">
     <div class="row bg-color-contact">
@@ -7,15 +17,14 @@
             <h5 class="text-center">Just let me know!</h5>
 
             <div class="center-form">
-                <form>
+                <form onsubmit="return sendMail(this);">
                     <input type="text" name="name" id="name" class="form-control contact-form" placeholder="Name" required />
                     <input type="email" name="emailaddress" id="emailaddress" class="form-control contact-form" placeholder="Email"
                         required />
-                    <textarea rows="5" name="recipeidea" id="recipeidea" class="form-control contact-form"
+                    <textarea rows="5" name="recipe_idea" id="recipe_idea" class="form-control contact-form"
                         placeholder="Recipe Idea" required></textarea>
                     <div class="form-row text-center">
                         <div class="col">
-                            {{ contactmeform_form | crispy }} {% csrf_token %}
                             <button type="submit" class="btn btn-sendidea">Send Idea</button>
                         </div>
                     </div>
@@ -26,5 +35,5 @@
     </div>
 
 </section>
-
+<script src="static/js/sendEmail.js"></script>
 {% endblock content %}
