@@ -192,7 +192,7 @@ nav {
     font-family: Rubik, sans-serif;
 }
 
-.form-control {
+.contact-form {
     width: 75%;
     margin-left: 13%;
 }
@@ -203,6 +203,24 @@ nav {
     font-size: 23px;
 }
 
+.like-comm-sect {
+    flex: 0 0 auto;
+    width: 9.3%;
+}
+
+@media screen and (max-width:995px) {
+    .commentform {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width:990px) {
+    .like-comm-sect {
+        width: 10%;
+    }
+}
+
+
 @media screen and (max-width:760px) {
     .post-title {
         margin-top: 10%;
@@ -210,5 +228,9 @@ nav {
 
     .recipe-body {
         margin-top: -20%;
+    }
+
+    .like-count {
+        margin-left: 28%;
     }
 }
