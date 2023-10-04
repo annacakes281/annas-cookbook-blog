@@ -220,7 +220,6 @@ nav {
     }
 }
 
-
 @media screen and (max-width:760px) {
     .post-title {
         margin-top: 10%;
@@ -232,5 +231,17 @@ nav {
 
     .like-count {
         margin-left: 28%;
+    }
+}
+
+@media screen and (max-width:430px) {
+    .recipe-body {
+        margin-top: -30%;
+    }
+}
+
+@media screen and (max-width:305px) {
+    .navbar-toggler {
+        margin-left: 40%;
     }
 }
