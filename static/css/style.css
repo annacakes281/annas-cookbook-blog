@@ -208,6 +208,11 @@ nav {
     width: 9.3%;
 }
 
+/* to change this colour */
+.page-link {
+    color: red
+}
+
 @media screen and (max-width:995px) {
     .commentform {
         font-size: 18px;

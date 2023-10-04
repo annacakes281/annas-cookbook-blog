@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
-from .models import Post, Comment, Tip
+from .models import Post, Comment, Tip, ContactMe
 
 
 @admin.register(Post)
@@ -27,3 +27,10 @@ class TipAdmin(admin.ModelAdmin):
     list_display = ('name', 'tip', 'post', 'posted_on')
     search_fields = ('name', 'email', 'tip',)
     list_filter = ('name', 'posted_on')
+
+
+@admin.register(ContactMe)
+class ContactAdmin(admin.ModelAdmin):
+
+    list_display = ('name', 'email', 'content')
+

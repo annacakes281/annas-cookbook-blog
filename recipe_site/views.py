@@ -101,6 +101,28 @@ class ContactPage(generic.ListView):
     template_name = 'contact_form.html'
 
 
-# class ContactView(View):
-    # still need to add this, just want it functional that it sends off but onto admin panel
-    # can use similar method to the comment tips
+class ContactView(View):
+    def post(self, request, slug, *args, **kwargs):
+        post = get_object_or_404(Post, slug=slug)
+        contacted = post.content
+
+        contact_me_form = ContactMeForm(data=request.POST)
+        if contact_me_form.is_valid():
+            contact_me_form.instance.email = request.user.email
+            contact_me_form.instance.name = request.user.username
+            content = contact_me_form.save(commit=False)
+            content.post = post
+            content.save()
+        else:
+            contact_me_form = ContactMeForm()
+
+        return render(
+            request,
+            "contact_form.html",
+            {
+                "post": post,
+                "contacted": contacted,
+                "contactsent": True,
+                "contact_me_form": ContactMeForm()
+            },
+        )
