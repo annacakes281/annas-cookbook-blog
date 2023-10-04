@@ -9,7 +9,7 @@ class PostList(generic.ListView):
     model = Post
     queryset = Post.objects.filter(status=1).order_by("-posted_on")
     template_name = 'index.html'
-    paginate_by = 5  # edit this when testing with more posts
+    paginate_by = 6  # edit this when adding different sections
 
 
 class ViewRecipe(View):

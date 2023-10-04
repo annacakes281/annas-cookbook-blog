@@ -96,16 +96,17 @@ body {
 .post-title {
     margin-top: 20%;
     margin-left: 5%;
-    font-family: Rubix, sans-serif;
+    font-family: Indie Flower, cursive, sans-serif;
+    font-weight: bolder;
 }
 
 .post-subtitle {
     margin-left: 5%;
-    color: #322a4d;
+    color: #2d2532;
     font-family: Rubix, sans-serif;
+    font-weight: bold;
 }
 
-/* need to edit these  */
 
 .btn-like {
     color: #e61e95;
@@ -142,7 +143,8 @@ nav {
     background-color: #fff5ff;
 }
 
-.card-body {
+.card-body,
+.recipe-body {
     font-family: Rubix, sans-serif;
     font-size: larger;
 }
@@ -199,4 +201,14 @@ nav {
     font-family: Indie Flower, cursive, sans-serif;
     font-weight: bolder;
     font-size: 23px;
+}
+
+@media screen and (max-width:760px) {
+    .post-title {
+        margin-top: 10%;
+    }
+
+    .recipe-body {
+        margin-top: -20%;
+    }
 }

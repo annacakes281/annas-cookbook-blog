@@ -8,7 +8,8 @@
         <h1 class="post-title">{{ post.recipe_name }}</h1>
         <!-- Post author goes before the | the post's created date goes after -->
         <p class="post-subtitle">
-          {{ post.written_by }} | {{ post.posted_on }}
+          Written By: {{ post.written_by }} <br> 
+          Posted On: {{ post.posted_on }} | Updated On: {{ post.edited_on }}
         </p>
       </div>
       <div class="d-none d-md-block col-md-6 masthead-image">
@@ -19,7 +20,7 @@
           width="100%"
         />
         {% else %}
-        <img src=" {{ post.recipe_image.url }}" width="100%" height="50%" />
+        <img src=" {{ post.recipe_image.url }}" width="100%" height="auto" />
         {% endif %}
       </div>
     </div>
@@ -29,10 +30,11 @@
 <div class="container">
   <div class="row">
     <div class="col card mb-4 mt-3 left top">
-      <div class="card-body">
+      <div class="card-body recipe-body">
         <!-- The post content goes inside the card-text. -->
         <!-- Use the | safe filter inside the template tags -->
         <p class="recipe-headings">About: {{ post.excerpt | safe }}</p>
+        <br>
         <p class="recipe-headings"><i class="fa-regular fa-clock"></i> Prep Time: {{ post.prep_time | safe }}</p>
         <p class="recipe-headings"><i class="fa-regular fa-clock"></i> Cook Time: {{ post.cook_time | safe }}</p>
         <br>
