@@ -5,8 +5,8 @@ body {
 }
 
 .brand {
-    font-family: Montserrat, sans-serif;
-    font-size: 1.5rem;
+    font-family: Dosis, sans-serif;
+    font-size: 30px;
     font-weight: 700;
     color: #4A4A4F;
 
@@ -18,7 +18,8 @@ body {
 }
 
 /* main background colour  */
-.main-bg {
+.main-bg,
+.pagination {
     background-color: #f2ebf2;
 }
 
@@ -132,6 +133,7 @@ body {
 .nav-item {
     font-family: Poppins, sans-serif;
     font-weight: 500;
+    font-size: 16px;
 }
 
 .navbar-text {
@@ -208,9 +210,18 @@ nav {
     width: 9.3%;
 }
 
-/* to change this colour */
+#hr-subtitle {
+    color: transparent;
+}
+
+.recipe-title {
+    font-family: Dosis, sans-serif;
+}
+
 .page-link {
-    color: red
+    color: black;
+    background-color: #de91e4;
+    font-family: Rubik, sans-serif;
 }
 
 @media screen and (max-width:995px) {
@@ -245,7 +256,7 @@ nav {
     }
 }
 
-@media screen and (max-width:305px) {
+@media screen and (max-width:365px) {
     .navbar-toggler {
         margin-left: 40%;
     }

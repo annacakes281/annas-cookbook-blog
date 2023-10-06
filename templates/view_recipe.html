@@ -8,8 +8,11 @@
         <h1 class="post-title">{{ post.recipe_name }}</h1>
         <!-- Post author goes before the | the post's created date goes after -->
         <p class="post-subtitle">
-          Written By: {{ post.written_by }} <br> 
-          Posted On: {{ post.posted_on }} | Updated On: {{ post.edited_on }}
+          Written By: {{ post.written_by }} <hr id="hr-subtitle"> 
+        </p>
+        <p class="post-subtitle">
+            Posted On: {{ post.posted_on }} <br>
+            Updated On: {{ post.edited_on }}
         </p>
       </div>
       <div class="d-none d-md-block col-md-6 masthead-image">
