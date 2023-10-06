@@ -17,14 +17,12 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from recipe_site.views import ContactPage
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin:index'),
     path('summernote/', include('django_summernote.urls')),
     path('', include('recipe_site.urls'), name='recipe_urls'),
     path('accounts/', include('allauth.urls')),
-    path('contact', ContactPage, name='contact'),
 ]
 
 if settings.DEBUG:

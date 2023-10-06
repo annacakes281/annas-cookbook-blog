@@ -12,5 +12,5 @@ function sendMail(contactForm) {
                 console.log("FAILED", error);
             }
         );
-    return false;  // To block from loading a new page
+    // return false;  // can use this to send a feedback message, set time out etc, after success
 }

@@ -33,7 +33,8 @@ X_FRAME_OPTIONS = "SAMEORIGIN"  # Needed for Summernote to run in deployment
 DEBUG = True
 # DEBUG = os.environ.get('DEBUG', False)  # add back in after
 
-ALLOWED_HOSTS = ['8000-annacakes281-my-cookbook-ygn2p5f2uw.us2.codeanyapp.com', 'localhost',
+ALLOWED_HOSTS = ['8000-annacakes281-my-cookbook-ygn2p5f2uw.us2.codeanyapp.com',
+                 'localhost',
                  'my-cookbook-website-e503fbfb1e72.herokuapp.com']
 
 ACCOUNT_EMAIL_VERIFICATION = 'none'
