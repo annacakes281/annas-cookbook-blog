@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.http import HttpResponseRedirect
 from django.views import generic, View
-from .models import Post, ContactMe
-from .forms import CommentForm, TipForm, ContactMeForm
+from .models import Post
+from .forms import CommentForm, TipForm
 
 
 class PostList(generic.ListView):
@@ -96,33 +96,5 @@ class PostLike(View):
         return HttpResponseRedirect(reverse('view_recipe', args=[slug]))
 
 
-class ContactPage(generic.ListView):
-    model = ContactMe
-    template_name = 'contact_form.html'
-
-
-class ContactView(View):
-    def post(self, request, slug, *args, **kwargs):
-        post = get_object_or_404(Post, slug=slug)
-        contacted = post.content
-
-        contact_me_form = ContactMeForm(data=request.POST)
-        if contact_me_form.is_valid():
-            contact_me_form.instance.email = request.user.email
-            contact_me_form.instance.name = request.user.username
-            content = contact_me_form.save(commit=False)
-            content.post = post
-            content.save()
-        else:
-            contact_me_form = ContactMeForm()
-
-        return render(
-            request,
-            "contact_form.html",
-            {
-                "post": post,
-                "contacted": contacted,
-                "contactsent": True,
-                "contact_me_form": ContactMeForm()
-            },
-        )
+def ContactPage(request):
+    return render(request, 'contact_form.html')
