@@ -1,9 +1,15 @@
 {% extends "base.html" %} {% block content %}
-<!-- still need to fully edit this is a temp template for practice purposes -->
+<div class="container-fluid">
+  <div class="row">
+    <h1 class="text-center recipe-title">About</h1>
+    <p class="text-center">The quick brown fox jumps over the lazy dog</p>
+  </div>
+</div>
+
 <div class="container-fluid">
   <div class="row">
     <!-- Blog Entries Column -->
-    <h1>Recipe Posts</h1>
+    <h1 class="text-center recipe-title">My Recipe Posts</h1>
     <div class="col-12 mt-3 left">
       <div class="row">
         {% for post in post_list %}
@@ -18,10 +24,7 @@
                 />
                 {% else %}
 
-                <img
-                  class="card-img-top"
-                  src=" {{ post.recipe_image.url }}"
-                />
+                <img class="card-img-top" src=" {{ post.recipe_image.url }}" />
                 <!-- still need to fix image display -->
 
                 {% endif %}
@@ -66,7 +69,5 @@
   </nav>
   {% endif %}
 </div>
-<div>
-    <h2>TEST AREA</h2>
-</div>
+
 {%endblock%}
