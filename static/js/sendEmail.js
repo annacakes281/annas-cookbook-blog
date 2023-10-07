@@ -6,10 +6,10 @@ function sendMail(contactForm) {
     })
         .then(
             function (response) {
-                console.log("SUCCESS", response);
+                alert("Your Message Has Been Sent", response);
             },
             function (error) {
-                console.log("FAILED", error);
+                alert("Message Failed To Send", error);
             }
         );
     // return false;  // can use this to send a feedback message, set time out etc, after success
