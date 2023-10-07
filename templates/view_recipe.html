@@ -87,6 +87,13 @@
             >
             {% endwith %}
           </div>
+        <div class="col-1 like-comm-sect">
+            {% with tips.count as total_tips %}
+            <strong class="text-secondary"><i class="fa-regular fa-star"></i>
+                <!-- Our total_comments variable goes before the closing strong tag -->
+                {{ total_tips }}</strong>
+            {% endwith %}
+        </div>
         </div>
       </div>
     </div>

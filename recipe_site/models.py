@@ -23,7 +23,7 @@ class Post(models.Model):
         User, related_name='recipe_likes', blank=True)
 
     class Meta:
-        ordering = ['-posted_on']  # may change, Django docs
+        ordering = ['-posted_on']
 
     def __str__(self):
         return self.recipe_name
@@ -41,7 +41,7 @@ class Comment(models.Model):
     posted_on = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ['posted_on']  # may change, Django docs
+        ordering = ['posted_on']
 
     def __str__(self):
         return f"Comment {self.comment} by {self.name}"

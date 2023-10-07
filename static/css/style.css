@@ -230,6 +230,11 @@ nav {
     color: whitesmoke;
 }
 
+#about {
+    font-family: Courgette, cursive, sans-serif;
+    font-size: larger;
+}
+
 @media screen and (max-width:995px) {
     .commentform {
         font-size: 18px;
