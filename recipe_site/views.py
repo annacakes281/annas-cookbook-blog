@@ -97,5 +97,8 @@ class PostLike(View):
 
 
 def contact_page(request):
-    print("hello")
     return render(request, 'contact_form.html')
+
+
+def add_recipe(request):
+    return HttpResponseRedirect(reverse('add_recipe'))

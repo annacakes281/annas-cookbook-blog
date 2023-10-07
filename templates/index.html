@@ -2,6 +2,7 @@
 <div class="container-fluid">
   <div class="row">
     <h1 class="text-center recipe-title">About Anna's Cookbook</h1>
+    <hr class="hr-trans">
     <p class="text-center" id="about">
       Welcome to my little cookbook recipe type blog! <br />
       I post all types of different recipes, some are things I've found online
@@ -10,9 +11,14 @@
       I hope you enjoy! Feel free to leave me any feedback, or send me recipe
       ideas of your own for me to try!
     </p>
+    <div class="text-center">
+        {% if user.is_superuser %}
+        <a href="{% url 'add_recipe' %}"><button id="add_new">Add New Recipe</button></a>
+        {% endif %}
+    </div>
   </div>
 </div>
-
+<hr class="hr-trans">
 <div class="container-fluid">
   <div class="row">
     <!-- Blog Entries Column -->

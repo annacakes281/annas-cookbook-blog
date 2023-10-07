@@ -210,7 +210,7 @@ nav {
     width: 9.3%;
 }
 
-#hr-subtitle {
+.hr-trans {
     color: transparent;
 }
 
@@ -233,6 +233,11 @@ nav {
 #about {
     font-family: Courgette, cursive, sans-serif;
     font-size: larger;
+}
+
+#add_new {
+    background-color: #e8abe8;
+    font-family: Rubik, sans-serif;
 }
 
 @media screen and (max-width:995px) {
