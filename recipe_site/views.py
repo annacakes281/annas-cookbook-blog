@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.http import HttpResponseRedirect
 from django.views import generic, View
+from django.db.models import Q
 from .models import Post
 from .forms import CommentForm, TipForm
 
@@ -102,3 +103,16 @@ def contact_page(request):
 
 def add_recipe(request):
     return HttpResponseRedirect(reverse('add_recipe'))
+
+
+class SearchRecipes(generic.ListView):
+    model = Post
+    template_name = 'search_recipes.html'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        post_list = Post.objects.filter(
+            Q(recipe_name__icontains='query') | 
+            Q(ingredients__icontains='query')
+        )
+        return post_list
