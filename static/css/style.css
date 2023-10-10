@@ -224,7 +224,7 @@ nav {
     font-family: Rubik, sans-serif;
 }
 
-#footer {
+#footer-contact {
     font-family: Rubik, sans-serif;
     font-size: larger;
     color: whitesmoke;
@@ -253,6 +253,22 @@ nav {
 .search-bar {
     margin-top: 2%;
     margin-left: 15%;
+}
+
+#footer-socials {
+    font-family: Rubik, sans-serif;
+    font-size: medium;
+    color: whitesmoke;
+    text-align: center;
+    list-style-type: none;
+}
+
+#footer-socials i {
+    color: whitesmoke;
+}
+
+#footer-socials>li {
+    display: inline;
 }
 
 
