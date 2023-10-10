@@ -54,8 +54,10 @@
                     </li>
                     {% endif %}
                     <li class="nav-item">
-                        <form action="{% url 'search_recipes' %}" method="get" class="search-bar">
+                        <form action="{% url 'search_recipes' %}" method="get" class="d-flex align-items-center flex-nowrap">
+                            {% csrf_token %}
                             <input name="q" type="text" placeholder="Search...">
+                            <a href="{% url 'search_recipes' %}"><button class="search-btn">Search</button></a>
                         </form>
                     </li>
                 </ul>
