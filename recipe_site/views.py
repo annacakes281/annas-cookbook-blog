@@ -112,7 +112,6 @@ class SearchRecipes(generic.ListView):
     def get_queryset(self):
         query = self.request.GET.get('q')
         post_list = Post.objects.filter(
-            Q(recipe_name__icontains='query') | 
-            Q(ingredients__icontains='query')
+            Q(recipe_name__icontains=query) | Q(ingredients__icontains=query)
         )
         return post_list

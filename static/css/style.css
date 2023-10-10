@@ -240,6 +240,21 @@ nav {
     font-family: Rubik, sans-serif;
 }
 
+.search-results {
+    list-style-type: none;
+    font-family: Dosis, sans-serif;
+    color: #5500bf;
+}
+
+.search-results:hover {
+    color: #b630d1;
+}
+
+.search-bar {
+    margin-top: 2%;
+    margin-left: 15%;
+}
+
 @media screen and (max-width:995px) {
     .commentform {
         font-size: 18px;
@@ -249,6 +264,11 @@ nav {
 @media screen and (max-width:990px) {
     .like-comm-sect {
         width: 10%;
+    }
+
+    .search-bar {
+        margin-top: 1%;
+        margin-left: unset;
     }
 }
 
@@ -264,6 +284,7 @@ nav {
     .like-count {
         margin-left: 28%;
     }
+
 }
 
 @media screen and (max-width:430px) {

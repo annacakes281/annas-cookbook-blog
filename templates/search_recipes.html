@@ -3,17 +3,23 @@
 <section class="container-fluid card-body">
   <div class="row bg-color-contact">
     <div class="col">
-      <h3 class="text-center">Search Page</h3>
-      <h5 class="text-center">Find what you need <i class="fa-solid fa-magnifying-glass"></i></h5>
-
-
-      <ul>
-        {% for post in post_list %}
-        <li>
-            {{ post.recipe_name }}
-        </li>
-        {% endfor %}
-      </ul>
+      <h3 class="text-center">Search Results Page</h3>
+      <h4 class="text-center">
+        Find what you need <i class="fa-solid fa-magnifying-glass"></i>
+      </h4>
+      <p class="text-center">Select a result from below</p>
+      <hr class="hr-trans" />
+      <div class="text-center">
+        <ul class="search-results">
+          {% for post in post_list %}
+          <li>
+            <a href="{% url 'view_recipe' post.slug %}" class="post-link">
+              <h2 class="card-title search-results">{{ post.recipe_name }}</h2>
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
     </div>
   </div>
 </section>
