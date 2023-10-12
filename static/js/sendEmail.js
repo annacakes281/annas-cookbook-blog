@@ -12,5 +12,6 @@ function sendMail(contactForm) {
                 alert("Message Failed To Send", error);
             }
         );
-    // return false;  // can use this to send a feedback message, set time out etc, after success
 }
+
+// tested on mobile, alert pops up saying failed to send but email comes through

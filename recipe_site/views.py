@@ -21,8 +21,11 @@ class ViewRecipe(View):
         comments = post.comments.order_by('posted_on')
         tips = post.tips.order_by('posted_on')
         liked = False
+        hearted = False
         if post.likes.filter(id=self.request.user.id).exists():
             liked = True
+        if post.hearts.filter(id=self.request.user.id).exists():
+            hearted = True
 
         return render(
             request,
@@ -34,6 +37,7 @@ class ViewRecipe(View):
                 "tips": tips,
                 "tipped": True,
                 "liked": liked,
+                "hearted": hearted,
                 "comment_form": CommentForm(),
                 "tip_form": TipForm()
             },
@@ -45,8 +49,11 @@ class ViewRecipe(View):
         comments = post.comments.order_by('posted_on')
         tips = post.tips.order_by('posted_on')
         liked = False
+        hearted = False
         if post.likes.filter(id=self.request.user.id).exists():
             liked = True
+        if post.hearts.filter(id=self.request.user.id).exists():
+            hearted = True
 
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
@@ -78,6 +85,7 @@ class ViewRecipe(View):
                 "tips": tips,
                 "tipped": True,
                 "liked": liked,
+                "hearted": hearted,
                 "comment_form": CommentForm(),
                 "tip_form": TipForm()
             },
@@ -93,6 +101,19 @@ class PostLike(View):
             post.likes.remove(request.user)
         else:
             post.likes.add(request.user)
+
+        return HttpResponseRedirect(reverse('view_recipe', args=[slug]))
+
+
+class PostHeart(View):
+
+    def post(self, request, slug, *args, **kwargs):
+        post = get_object_or_404(Post, slug=slug)
+
+        if post.hearts.filter(id=request.user.id).exists():
+            post.hearts.remove(request.user)
+        else:
+            post.hearts.add(request.user)
 
         return HttpResponseRedirect(reverse('view_recipe', args=[slug]))
 

@@ -48,29 +48,15 @@
           <div class="col-1 like-comm-sect">
             <strong>
               {% if user.is_authenticated %}
-              <form
-                class="d-inline"
-                action="{% url 'post_like' post.slug %}"
-                method="POST"
-              >
+            <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
                 {% csrf_token %} {% if liked %}
-                <button
-                  type="submit"
-                  name="blogpost_id"
-                  value="{{post.slug}}"
-                  class="btn-like"
-                ><i class="fas fa-heart"></i>
-                </button>
+                <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i
+                        class="fas fa-thumbs-up"></i></button>
                 {% else %}
-                <button
-                  type="submit"
-                  name="blogpost_id"
-                  value="{{post.slug}}"
-                  class="btn-like"
-                ><i class="far fa-heart"></i>
-                </button>
+                <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i
+                        class="far fa-thumbs-up"></i></button>
                 {% endif %}
-              </form>
+            </form>
               {% else %}
               <span class="text-secondary"><i class="far fa-heart"></i></span>
               {% endif %}
@@ -78,6 +64,25 @@
               <span class="text-secondary like-count">{{ post.number_of_likes }} </span>
             </strong>
           </div>
+        <div class="col-1 like-comm-sect">
+            <strong>
+                {% if user.is_authenticated %}
+                <form class="d-inline" action="{% url 'post_heart' post.slug %}" method="POST">
+                    {% csrf_token %} {% if hearted %}
+                    <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i
+                            class="fas fa-heart"></i></button>
+                    {% else %}
+                    <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i
+                            class="far fa-heart"></i></button>
+                    {% endif %}
+                </form>
+                {% else %}
+                <span class="text-secondary"><i class="far fa-heart"></i></span>
+                {% endif %}
+                <!-- The number of likes goes before the closing strong tag -->
+                <span class="text-secondary like-count">{{ post.number_of_hearts }} </span>
+            </strong>
+        </div>
           <div class="col-1 like-comm-sect">
             {% with comments.count as total_comments %}
             <strong class="text-secondary"

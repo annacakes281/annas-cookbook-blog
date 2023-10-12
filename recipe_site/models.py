@@ -21,6 +21,8 @@ class Post(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(
         User, related_name='recipe_likes', blank=True)
+    hearts = models.ManyToManyField(
+        User, related_name='recipe_hearts', blank=True)
 
     class Meta:
         ordering = ['-posted_on']
@@ -30,6 +32,9 @@ class Post(models.Model):
 
     def number_of_likes(self):
         return self.likes.count()
+
+    def number_of_hearts(self):
+        return self.hearts.count()
 
 
 class Comment(models.Model):
@@ -60,4 +65,3 @@ class Tip(models.Model):
 
     def __str__(self):
         return f"Tip {self.tip} by {self.name}"
-
