@@ -295,6 +295,7 @@
   <https://devmaesters.com/blog/34>
   <https://learndjango.com/tutorials/django-search-tutorial>
   https://stackoverflow.com/questions/59811002/display-search-bar-and-search-button-inline-with-css
+  <https://www.youtube.com/watch?v=H4QPHLmsZMU>
   (format these properly)
 - mentor suggestions for whitenoise and summernote pages
 

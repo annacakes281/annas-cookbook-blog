@@ -123,7 +123,19 @@ def contact_page(request):
 
 
 def my_profile(request):
-    return render(request, 'my_profile.html')
+    new = Post.objects.filter(bookmarks=request.user)
+    return render(request, 'my_profile.html', {'new': new})
+
+
+def add_bookmark(request, id):
+    post = get_object_or_404(Post, id=id)
+
+    if post.bookmarks.filter(id=request.user.id).exists():
+        post.bookmarks.remove(request.user)
+    else:
+        post.bookmarks.add(request.user)
+
+    return HttpResponseRedirect(reverse('view_recipe'))
 
 
 def add_recipe(request):

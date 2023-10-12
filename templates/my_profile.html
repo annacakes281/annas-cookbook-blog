@@ -1,5 +1,5 @@
 {% extends "base.html" %} {% block content %}
-
+<!-- edit this page -->
 <div class="container-fluid">
   <div class="row">
     <h1 class="text-center recipe-title">My Profile</h1>
@@ -8,6 +8,31 @@
       Welcome to your profile where you can see your saved recipies!
     </p>
   </div>
-</div>
+  {% for post in new %}
+  <div class="col-md-4">
+    <div class="card mb-4">
+      <div class="card-body">
+        <div class="image-container">
+          {% if "placeholder" in post.recipe_image.url %}
+          <img
+            class="card-img-top"
+            src="https://as2.ftcdn.net/v2/jpg/02/65/58/29/1000_F_265582946_D57tH8k6p377flQrhptz93w9bK9CN6AR.jpg"
+          />
+          {% else %}
 
-{%endblock%}
+          <img class="card-img-top" src=" {{ post.recipe_image.url }}" />
+          <!-- still need to fix image display -->
+
+          {% endif %}
+          <div class="image-flash">
+            <p class="author">Author: {{ post.written_by }}</p>
+          </div>
+        </div>
+        <a href="{% url 'view_recipe' post.slug %}" class="post-link">
+          <h2 class="card-title recipe-title">{{ post.recipe_name }}</h2>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %} {%endblock%}

@@ -23,6 +23,8 @@ class Post(models.Model):
         User, related_name='recipe_likes', blank=True)
     hearts = models.ManyToManyField(
         User, related_name='recipe_hearts', blank=True)
+    bookmarks = models.ManyToManyField(
+        User, related_name='bookmark', blank=True)
 
     class Meta:
         ordering = ['-posted_on']
