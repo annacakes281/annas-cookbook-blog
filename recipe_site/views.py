@@ -122,6 +122,10 @@ def contact_page(request):
     return render(request, 'contact_form.html')
 
 
+def my_profile(request):
+    return render(request, 'my_profile.html')
+
+
 def add_recipe(request):
     return HttpResponseRedirect(reverse('add_recipe'))
 
