@@ -3,6 +3,7 @@ from .forms import CommentForm, TipForm
 
 
 class TestForms(TestCase):
+    # testing for the forms
 
     def test_comment_field_is_required(self):
         form = CommentForm({'comment': ''})

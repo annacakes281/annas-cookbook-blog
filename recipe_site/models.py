@@ -6,6 +6,7 @@ STATUS = ((0, "Draft"), (1, "Posted"))
 
 
 class Post(models.Model):
+    # main recipe post model for the blog
     recipe_name = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     written_by = models.ForeignKey(
@@ -40,6 +41,7 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
+    # comment model for the blog
     post = models.ForeignKey(
         Post, on_delete=models.CASCADE, related_name="comments")
     name = models.CharField(max_length=80)
@@ -55,6 +57,7 @@ class Comment(models.Model):
 
 
 class Tip(models.Model):
+    # tips and recommendation model for the blog
     post = models.ForeignKey(
         Post, on_delete=models.CASCADE, related_name="tips")
     name = models.CharField(max_length=80)

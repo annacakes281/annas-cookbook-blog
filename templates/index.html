@@ -1,87 +1,85 @@
 {% extends "base.html" %} {% block content %}
-<div class="container-fluid">
-  <div class="row">
-    <h1 class="text-center recipe-title">About Anna's Cookbook</h1>
-    <hr class="hr-trans">
-    <p class="text-center" id="about">
-      Welcome to my little cookbook recipe type blog! <br />
-      I post all types of different recipes, some are things I've found online
-      and have made with some of my own additions, some are things I've just
-      gotten creative with!<br />
-      I hope you enjoy! Feel free to leave me any feedback, or send me recipe
-      ideas of your own for me to try!
-    </p>
-    <div class="text-center">
-        {% if user.is_superuser %}
-        <a href="{% url 'add_recipe' %}"><button id="add-new">Add New Recipe</button></a>
-        {% endif %}
-    </div>
-  </div>
-</div>
-<hr class="hr-trans">
-<div class="container-fluid">
-  <div class="row">
-    <!-- Blog Entries Column -->
-    <h1 class="text-center recipe-title">My Recipe Posts</h1>
-    <div class="col-12 mt-3 left">
-      <div class="row">
-        {% for post in post_list %}
-        <div class="col-md-4">
-          <div class="card mb-4">
-            <div class="card-body">
-              <div class="image-container">
-                {% if "placeholder" in post.recipe_image.url %}
-                <img
-                  class="card-img-top"
-                  src="https://as2.ftcdn.net/v2/jpg/02/65/58/29/1000_F_265582946_D57tH8k6p377flQrhptz93w9bK9CN6AR.jpg"
-                />
-                {% else %}
 
-                <img class="card-img-top" src=" {{ post.recipe_image.url }}" />
-                <!-- still need to fix image display -->
-
-                {% endif %}
-                <div class="image-flash">
-                  <p class="author">Author: {{ post.written_by }}</p>
-                </div>
-              </div>
-              <a href="{% url 'view_recipe' post.slug %}" class="post-link">
-                <h2 class="card-title recipe-title">{{ post.recipe_name }}</h2>
-              </a>
-              <hr />
-              <p class="card-text text-muted h6">
-                {{ post.posted_on}} <i class="far fa-thumbs-up"></i>
-                {{ post.number_of_likes }}
-                <i class="far fa-heart"></i> {{ post.number_of_hearts }}
-              </p>
-            </div>
-          </div>
+<div class="container-fluid">
+    <div class="row">
+        <h1 class="text-center recipe-title">About Anna's Cookbook</h1>
+        <hr class="hr-trans">
+        <p class="text-center" id="about">
+        Welcome to my little cookbook recipe type blog! <br>
+        I post all types of different recipes, some are things I've found online
+        and have made with some of my own additions, some are things I've just
+        gotten creative with!<br>
+        I hope you enjoy! Feel free to leave me any feedback, or send me recipe
+        ideas of your own for me to try!
+        </p>
+        <div class="text-center">
+            {% if user.is_superuser %}
+            <a href="{% url 'add_recipe' %}"><button id="add-new">Add New Recipe</button></a>
+            {% endif %}
         </div>
-        {% if forloop.counter|divisibleby:3 %}
-      </div>
-      <div class="row">{% endif %} {% endfor %}</div>
-    </div>
   </div>
-  {% if is_paginated %}
-  <nav aria-label="Page navigation">
-    <ul class="pagination justify-content-center">
-      {% if page_obj.has_previous %}
-      <li>
-        <a href="?page={{ page_obj.previous_page_number }}" class="page-link"
-          >&laquo; PREV
-        </a>
-      </li>
-      {% endif %} {% if page_obj.has_next %}
-      <li>
-        <a href="?page={{ page_obj.next_page_number }}" class="page-link">
-          NEXT &raquo;</a
-        >
-      </li>
-
-      {% endif %}
-    </ul>
-  </nav>
-  {% endif %}
 </div>
 
-{%endblock%}
+<hr class="hr-trans">
+
+<div class="container-fluid">
+    <div class="row">
+        <h1 class="text-center recipe-title">My Recipe Posts</h1>
+
+        <div class="col-12 mt-3 left">
+            <div class="row">
+            {% for post in post_list %}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="image-container">
+                            {% if "placeholder" in post.recipe_image.url %}
+                                <img class="card-img-top" 
+                                src="https://as2.ftcdn.net/v2/jpg/02/65/58/29/1000_F_265582946_D57tH8k6p377flQrhptz93w9bK9CN6AR.jpg">
+                            {% else %}
+                                <img class="card-img-top" src=" {{ post.recipe_image.url }}">
+                            {% endif %}
+
+                                <div class="image-flash">
+                                    <p class="author">Author: {{ post.written_by }}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="{% url 'view_recipe' post.slug %}" class="post-link">
+                            <h2 class="card-title recipe-title">{{ post.recipe_name }}</h2>
+                        </a>
+                        
+                        <hr>
+                        
+                        <p class="card-text text-muted h6">
+                            {{ post.posted_on}} <i class="far fa-thumbs-up"></i>
+                            {{ post.number_of_likes }}
+                            <i class="far fa-heart"></i> {{ post.number_of_hearts }}
+                        </p>
+                    </div>
+                </div>
+                {% if forloop.counter|divisibleby:3 %}
+                <div class="row">{% endif %} {% endfor %}</div>
+            </div>
+        </div>
+    </div>
+    
+    {% if is_paginated %}
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+            <li>
+                <a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV</a>
+            </li>
+            {% endif %} {% if page_obj.has_next %}
+            <li>
+                <a href="?page={{ page_obj.next_page_number }}" class="page-link">NEXT &raquo;</a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+</div>
+
+{% endblock %}

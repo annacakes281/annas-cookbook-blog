@@ -1,4 +1,5 @@
 function sendMail(contactForm) {
+    // send email from the contact form
     emailjs.send("gmail", "cookbook-blog", {
         "from_name": contactForm.name.value,
         "from_email": contactForm.emailaddress.value,

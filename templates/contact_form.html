@@ -5,8 +5,7 @@
     </script>
     <script type="text/javascript">
         (function () {
-            emailjs.init("81K-8zDaJ5bEHb6sc");
-        })();
+            emailjs.init("81K-8zDaJ5bEHb6sc");})();
     </script>
 </head>
 
@@ -18,9 +17,9 @@
 
             <div class="center-form">
                 <form onsubmit="return sendMail(this);">
-                    <input type="text" name="name" id="name" class="form-control contact-form" placeholder="Name" required />
+                    <input type="text" name="name" id="name" class="form-control contact-form" placeholder="Name" required>
                     <input type="email" name="emailaddress" id="emailaddress" class="form-control contact-form" placeholder="Email"
-                        required />
+                        required>
                     <textarea rows="5" name="recipeidea" id="recipeidea" class="form-control contact-form"
                         placeholder="Recipe Idea" required></textarea>
                     <div class="form-row text-center">
@@ -36,4 +35,4 @@
 
 </section>
 <script src="{% static 'js/sendEmail.js' %}" type="application/javascript"></script>
-{% endblock content %}
+{% endblock %}

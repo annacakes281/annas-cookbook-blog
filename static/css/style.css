@@ -1,8 +1,10 @@
-/* sort into categories */
-
-body {
-    background-color: #F9FAFC;
+/* main background colour  */
+.main-bg,
+.pagination {
+    background-color: #f2ebf2;
 }
+
+/* nav bar */
 
 .brand {
     font-family: Dosis, sans-serif;
@@ -12,16 +14,61 @@ body {
 
 }
 
+#logomid {
+    font-family: Rubik, sans-serif;
+    text-align: center;
+    font-weight: 400;
+}
+
+.nav-item {
+    font-family: Poppins, sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.navbar-text {
+    font-family: Poppins, sans-serif;
+    font-weight: 300;
+}
+
+nav {
+    background-color: #fff5ff;
+}
+
+.search-bar {
+    margin-top: 2%;
+    margin-left: 15%;
+}
+
 /* footer */
+
 .dark-bg {
     background-color: #ac30fa;
 }
 
-/* main background colour  */
-.main-bg,
-.pagination {
-    background-color: #f2ebf2;
+#footer-contact {
+    font-family: Rubik, sans-serif;
+    font-size: larger;
+    color: whitesmoke;
 }
+
+#footer-socials {
+    font-family: Rubik, sans-serif;
+    font-size: medium;
+    color: whitesmoke;
+    text-align: center;
+    list-style-type: none;
+}
+
+#footer-socials i {
+    color: whitesmoke;
+}
+
+#footer-socials>li {
+    display: inline;
+}
+
+/* index view */
 
 .card {
     border: none;
@@ -48,7 +95,35 @@ body {
 
 }
 
-/* recipe name view */
+.post-link {
+    text-decoration: none;
+    color: #3d3d45;
+    font-family: Rubix, sans-serif;
+}
+
+.post-link:hover,
+.page-link {
+    color: #7293ea;
+}
+
+.page-link {
+    color: black;
+    background-color: #de91e4;
+    font-family: Rubik, sans-serif;
+}
+
+#about {
+    font-family: Courgette, cursive, sans-serif;
+    font-size: larger;
+}
+
+#add-new {
+    background-color: #e8abe8;
+    font-family: Rubik, sans-serif;
+}
+
+/* recipe view */
+
 .masthead {
     margin-top: 10px;
     overflow: hidden;
@@ -83,19 +158,8 @@ body {
     z-index: 100;
 }
 
-.post-link {
-    text-decoration: none;
-    color: #3d3d45;
-    font-family: Rubix, sans-serif;
-}
-
-.post-link:hover,
-.page-link {
-    color: #7293ea;
-}
-
 .post-title {
-    margin-top: 20%;
+    margin-top: 10%;
     margin-left: 5%;
     font-family: Indie Flower, cursive, sans-serif;
     font-weight: bolder;
@@ -108,6 +172,32 @@ body {
     font-weight: bold;
 }
 
+.card-body,
+.recipe-body {
+    font-family: Rubix, sans-serif;
+    font-size: larger;
+}
+
+.comment-sect {
+    font-family: Rubik, sans-serif;
+}
+
+.recipe-headings {
+    font-family: Indie Flower, cursive, sans-serif;
+    font-weight: bolder;
+    font-size: 23px;
+}
+
+.like-comm-sect {
+    flex: 0 0 auto;
+    width: 9.3%;
+}
+
+.recipe-title {
+    font-family: Dosis, sans-serif;
+}
+
+/* buttons  */
 
 .btn-like {
     color: #e61e95;
@@ -120,35 +210,6 @@ body {
     color: #b24f8b;
     background: transparent;
     border: none;
-}
-
-/* My Own CSS */
-
-#logomid {
-    font-family: Rubik, sans-serif;
-    text-align: center;
-    font-weight: 400;
-}
-
-.nav-item {
-    font-family: Poppins, sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-}
-
-.navbar-text {
-    font-family: Poppins, sans-serif;
-    font-weight: 300;
-}
-
-nav {
-    background-color: #fff5ff;
-}
-
-.card-body,
-.recipe-body {
-    font-family: Rubix, sans-serif;
-    font-size: larger;
 }
 
 .btn-login,
@@ -168,6 +229,18 @@ nav {
 .btn-submit {
     background-color: #cc7edb;
 }
+
+.btn-manage,
+.btn-bookmark {
+    background-color: #ba9de2;
+    font-family: Rubik, sans-serif;
+}
+
+.btn-bookmark:hover {
+    background-color: #ec92e7;
+}
+
+/* accounts pages */
 
 .accounts-page {
     font-family: Rubik, sans-serif;
@@ -190,55 +263,15 @@ nav {
     text-decoration: underline;
 }
 
-.comment-sect {
-    font-family: Rubik, sans-serif;
-}
+
+/* contact form */
 
 .contact-form {
     width: 75%;
     margin-left: 13%;
 }
 
-.recipe-headings {
-    font-family: Indie Flower, cursive, sans-serif;
-    font-weight: bolder;
-    font-size: 23px;
-}
-
-.like-comm-sect {
-    flex: 0 0 auto;
-    width: 9.3%;
-}
-
-.hr-trans {
-    color: transparent;
-}
-
-.recipe-title {
-    font-family: Dosis, sans-serif;
-}
-
-.page-link {
-    color: black;
-    background-color: #de91e4;
-    font-family: Rubik, sans-serif;
-}
-
-#footer-contact {
-    font-family: Rubik, sans-serif;
-    font-size: larger;
-    color: whitesmoke;
-}
-
-#about {
-    font-family: Courgette, cursive, sans-serif;
-    font-size: larger;
-}
-
-#add-new {
-    background-color: #e8abe8;
-    font-family: Rubik, sans-serif;
-}
+/* search results view */
 
 .search-results {
     list-style-type: none;
@@ -250,37 +283,13 @@ nav {
     color: #b630d1;
 }
 
-.search-bar {
-    margin-top: 2%;
-    margin-left: 15%;
+/* misc */
+
+.hr-trans {
+    color: transparent;
 }
 
-#footer-socials {
-    font-family: Rubik, sans-serif;
-    font-size: medium;
-    color: whitesmoke;
-    text-align: center;
-    list-style-type: none;
-}
-
-#footer-socials i {
-    color: whitesmoke;
-}
-
-#footer-socials>li {
-    display: inline;
-}
-
-.btn-manage,
-.btn-bookmark {
-    background-color: #ba9de2;
-    font-family: Rubik, sans-serif;
-}
-
-.btn-bookmark:hover {
-    background-color: #ec92e7;
-}
-
+/* media queries - check these after the format!! */
 
 @media screen and (max-width:995px) {
     .commentform {
@@ -299,13 +308,15 @@ nav {
     }
 }
 
+@media screen and (max-width:767px) {
+    .masthead {
+        margin-bottom: -10%;
+    }
+}
+
 @media screen and (max-width:760px) {
     .post-title {
         margin-top: 10%;
-    }
-
-    .recipe-body {
-        margin-top: -20%;
     }
 
     .like-count {
@@ -314,9 +325,21 @@ nav {
 
 }
 
+@media screen and (max-width:630px) {
+    .masthead {
+        margin-bottom: -12%;
+    }
+}
+
+@media screen and (max-width:470px) {
+    .masthead {
+        margin-bottom: -18%;
+    }
+}
+
 @media screen and (max-width:430px) {
     .recipe-body {
-        margin-top: -30%;
+        margin-top: -2%;
     }
 }
 
