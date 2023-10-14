@@ -235,7 +235,7 @@ nav {
     font-size: larger;
 }
 
-#add_new {
+#add-new {
     background-color: #e8abe8;
     font-family: Rubik, sans-serif;
 }
@@ -269,6 +269,16 @@ nav {
 
 #footer-socials>li {
     display: inline;
+}
+
+.btn-manage,
+.btn-bookmark {
+    background-color: #ba9de2;
+    font-family: Rubik, sans-serif;
+}
+
+.btn-bookmark:hover {
+    background-color: #ec92e7;
 }
 
 

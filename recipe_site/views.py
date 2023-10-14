@@ -142,6 +142,14 @@ def add_recipe(request):
     return HttpResponseRedirect(reverse('add_recipe'))
 
 
+def manage_comments(request):
+    return HttpResponseRedirect(reverse('manage_comments'))
+
+
+def manage_tips(request):
+    return HttpResponseRedirect(reverse('manage_tips'))
+
+
 class SearchRecipes(generic.ListView):
     model = Post
     template_name = 'search_recipes.html'
