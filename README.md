@@ -37,10 +37,14 @@ The blog is aimed at anyone who enjoys cooking and is interested in trying a var
 <li>Homepage</li>
 <li>Nav Bar</li>
 <li>Search</li>
+<li>My Profile</li>
 <li>Accounts</li>
 <li>Admin Page</li>
 <li>Post New Recipe</li>
 <li>Recipe View</li>
+<li>Recipes for Everyone</li>
+<li>Bookmark Recipe</li>
+<li>Recipe Page</li>
 <li>Liking</li>
 <li>Comments, Tips & Recommendations</li>
 <li>Contact Page</li>
@@ -135,10 +139,10 @@ I created a view for the desktop and for mobile/tablet before deciding to implem
 The inital design has changed from the finished design of the blog in a few ways:
 <strong>FINISH THIS SECTION WHEN ADDED FINAL SECTION OF BLOG IN!!</strong>
 
-- The nav bar is displayed at the top of the page with a brand name, with the different nav links and search bar, as well as logo 'Release your Kitchen Creations'
+- The nav bar is displayed at the top of the page with a brand name, with the different nav links and search bar, as well as motto 'Release your Kitchen Creations'
 - There is an about section on the main page at the top rather than in the footer
 - Main section of recipe posts that is pagniated rather than the inital idea sections
-- I decided to keep a 'Recipes for Everyone' section...(FINISH EXPLAINING WHEN SECTION ADDED!!)
+- I decided to keep the 'Recipes for Everyone' section...(FINISH EXPLAINING WHEN SECTION ADDED!!)
 
 <strong>ADD IMAGE OF WEBSITE</strong>
 
@@ -186,27 +190,51 @@ Another Agile method I used were [Milestones](https://github.com/annacakes281/an
 
 ## **Features**
 
-- intro into what this section will be about
+In this section I will discuss the different features that I had implemented into my blog. Including the frameworks and libraries that I used to help create the blog.
 
 ### **_Django & Bootstrap_**
 
-- used django and bootstrap to create the project
-- used some external libraries for more help
+To help create the basis for my project I used a Python framework known as [Django](https://www.djangoproject.com/). This framework created the necessary admin-based side with the settings for the blog, as well as the blog application itself.
+
+Another framework which I used alongside Django in creating the layout for my project was [Bootstrap](https://getbootstrap.com/) and this was for taking my CSS design further and ensuring it was more optimised.
+
+I also used several other libraries within my project, and these are discussed in further detail in the <a href="#external-libraries">External Libraries</a> section.
 
 ### **_Homepage_**
 
-- photo of homepage
-- what is included on the home page
+The homepage is the mainpage where a user lands on when going to the blog. There are different areas and sections that a user can interact with.
+
+- The navigation bar where the logo sits, several navigation links that change depending whether a user is 'autenticated' or a 'superuser', my profile page, a search bar, and a motto. This becomes collapsable when viewed on smaller screens.
+- About section that has a small paragraph about the blog, as well as a 'add new recipe' button that is only visible if the user is a 'superuser'.
+- The recipe view where the user can see all the posts of the recipes. A photo, the author, the title, date posted, number of likes and number of hearts can be seen. This view is also paginated.
+- THE RECIPE FOR EVERYONE SECTION WRITE ABOUT ONCE IMPLEMENTED
+- The footer where there is a link to a contact page, as well as a small section to socials.
+
+<img src="">
 
 ### **_Nav Bar_**
 
-- photo of nav bar
-- what is on the nav bar
-- purpose of it and what it does
+The purpose of the nav bar is for users to be able to navigate to different pages throughout the website and be able to go back to the home page. The search feature is also itegrated into the nav bar. The nav bar will be displayed across each of the pages on the site. When viewed on smaller screens/viewports the navbar will collapse to provide optimisation.
+
+- The logo 'Anna's Cookbook' and 'Home' will bring users back to the homepage.
+- The 'Admin Page' is only visible if the user is a 'superuser' and will take the user to the admin panel where they can do admin tasks (this is further explained in the <a href="#admin">Admin</a> section).
+- When a user is not logged in they can see 'Register' and 'Login' in the navbar, which will take the user to the different accounts side, and when a user is logged in they can see the 'Logout' option (further details about <a href="#accounts">Accounts</a> can be viewed here).
+- There is a 'Search' bar in the navbar as well that users can learch for recipes or ingredients that they want to see (this is further discussed in the <a href="#search">Search</a> section).
+
+<img src=""> <em>The navbar when logged out/not signed in/registered</em>
+<img src=""> <em>The navbar when an admin/superuser</em>
+<img src=""> <em>The navbar when a regular user</em>
 
 ### **_Search_**
 
-- photo of search bar
+The search bar allows users to search for recipes by 'name' or 'ingredient'. The user can either press enter to search or click on the button and this will take users to a 'search results' page displaying all the results. If a user doesn't type anything and just searches it will display all the posts avaliable. The search bar makes it easier if a user is looking for a specific recipe or ingredient to use.
+
+<img src=""> <em>Search bar</em>
+<img src=""> <em>Search bar results 1</em>
+<img src=""> <em>Search bar results 2</em>
+
+### **_My Profile_**
+
 - purpose of it and what it does
 
 ### **_Accounts_**
@@ -227,6 +255,20 @@ Another Agile method I used were [Milestones](https://github.com/annacakes281/an
 ### **_Recipe View_**
 
 - photo of homepage and when clicked on recipe
+- purpose and what it does
+
+### **_Recipes For Everyone_**
+
+- photo of homepage and when clicked on recipe
+- purpose and what it does
+
+### **_Bookmark Recipe_**
+
+- purpose and what it does
+
+### **_Recipe Page_**
+
+- photo of this
 - purpose and what it does
 
 ### **_Liking_**
