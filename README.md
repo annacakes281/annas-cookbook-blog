@@ -2,8 +2,9 @@
 
 ## **Introduction**
 
-- add introduction to what the blog in about
-- short summary about the blog/website
+Anna's Cookbook Blog is a blog-type website where I will be posting my own recipes for others to look at and make themselves. It is an updated version of my original [Cookbook](https://annacakes281.github.io/my-cookbook/index.html) Website that I had created before using basic HTML and CSS. Users will also have the option to like and comment on recipe posts.
+
+The blog is aimed at anyone who enjoys cooking and is interested in trying a variety of recipes. The recipes are easy to follow along with and for different levels of cooking experience.
 
 ## **Table of Contents**
 
@@ -88,19 +89,32 @@
 
 ## **Creators Comments**
 
-- add a sentence or 2 about what tis section will be about and why you have included it
+In this section I will talk about my reasons behind creating the blog, any inspirations that I had used for creating it, as well as my thoughts on using Django as well as the other external libraries.
+
+The reason I have included this section was to add some of my personal thoughts and insight behind my creation.
 
 ### **_Reasons Behind The Blog_**
 
-- why you decided to do a cookbook blog website rather than anything else
+I decided to make a Cookbook Blog as I am always cooking at home and thought getting my recipes out there and just food ideas that I make would be an interesting concept. It seemed like the most appropriate idea at the time and I enjoyed creating it.
+
+Although throughout the process I did change my design idea a few times from a standard website and then decided to create a blog instead as I wanted to be able to only post my own recipes rather than having different users posting theirs.
 
 ### **_Inspirations_**
 
-- what websites you used for some inspiration on making the blog
+There were a few different websites and blogs that I used for inspirations and for creating my inital ideas for the blog. I mainly used them for some design and layout ideas.
+
+- [Natasha's Kitchen](https://natashaskitchen.com/) was one of the blog websites I used as inspiration for a blog as my idea, as this is a website that I have used several times myself when making food and I really like how it is set out, as well as easy to use.
+- [Cookpad](https://cookpad.com/uk/home) was a website I looked at during my design phase for ideas on layout and ideas of how I could design my website. This website was going to be used as an inital design before I decided to create a blog instead, however I did still decide to implement a section from here.
+- [Let the Baking Begin](https://letthebakingbegin.com/) was another blog that I looked at when creating my blog idea for how to create my layout and features to include. This is another blog that I have personally used before.
+- [CodeStar Blog](https://github.com/Code-Institute-Solutions/Django3blog/tree/master) was the project I did follow from to help create the inital base for my blog, although I did make several changes to the code, design, views, models to suite my blog. 
 
 ### **_My Thoughts_**
 
-- thoughts on using django as a whole to create the blog, as well as the other external libraries used: cloudinary, bootstrap, elephantsql, etc (find list of each one used)
+I really enjoyed using Django to create my blog, despite having some issues that I needed to think outside the box to fix. I used several different external libraries with Django to help create several features, such as [Cloundinary](https://cloudinary.com/) to store my images and media files externally, [Bootstrap](https://getbootstrap.com/) as a framework for further CSS design and [ElephantSQL](https://www.elephantsql.com/) as an external SQL database. I will further discuss the external libraries that were used in the <a href="#external-libraries">External Libraries</a> section.
+
+I would definetly use Django again for future projects and I would like to learn more about the different features involved to be able to create more complex projects in the future. 
+
+I am very happy with the blog that I have designed and the features that I have included, and I look forward to implementing more in the future.
 
 ## **Page Design**
 
