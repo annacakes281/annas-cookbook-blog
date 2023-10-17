@@ -235,17 +235,37 @@ The search bar allows users to search for recipes by 'name' or 'ingredient'. The
 
 ### **_My Profile_**
 
-- purpose of it and what it does
+The 'My Profile' page can only be accessed if a user is logged into the blog. This page will display any recipes that a user has bookmarked. This makes it easy for users to find what recipes are their favourites.
+
+<img src=""> <em>My Profile</em>
 
 ### **_Accounts_**
 
-- photo of the different account side
-- purpose of it and what it does
+There are three different account pages that a user can see on the blog. If they are not signed in they have the option to 'login' or 'register' or if they are logged in they can 'logout'.
+
+- The register page will allows users to sign up for the blog by creating a 'username', 'email' (which is optional), and a 'password' and then they can sign up. There is also a link that small section that asks whether the user already has an account, and then they can 'sign in' instead. Once they have registered it will redirect the user to the homepage.
+- The sign in page will allow already registered users to sign in with their username and password, also having the 'remember me' option. At this current moment in time there is no 'forgot password' feature implemented. Once a user has logged in, they will be redirected back to the homepage.
+- The logout page will take users to a page where they can 'signout' of the blog. Once they have signed out, the page will be redirected back to the homepage.
+
+<img src=""> <em>Register Page</em>
+<img src=""> <em>Sign in Page</em>
+<img src=""> <em>Logout Page</em>
 
 ### **_Admin_**
 
-- photo of admin view (only accesible/visble if admin)
-- purpose and what it does
+The admin page is a view that is provided by Django. I have decided to implement a quick way to access this page in the nav bar so that 'superusers' also known as 'admins' can easily gain access to the admin side. As an admin there are several different things that can be viewed and done from this page, making it an important page to be able to access and view.
+
+- Admins are able to see any recent actions that were made.
+- Admins are able to see 'email address' associated with accounts, as well as add and make any changes.
+- Admins are able to see 'Users' and 'Groups. The 'User' page will show the admins all of the current website users, as well as whether they are an admin or not. They also have the ability to view and edit user details. It is important to note that password data is not stored.
+- Admins are able to see the Django Summernote 'Attachments' which are any of the images used on the recipe posts
+- Admins are able to see and manage the comments, tips, and posts on the blog at ease. From the Post page, admins are able to add new blog posts easily. Within the comments and tips pages, admins are able to remove comments if needed. There is also an easy search feature across these pages to easily find what the admin may be looking for.
+- Admins are able to view and edit 'Sites'.
+- Admins are able to view and edit 'social accounts' associated with the blog.
+
+<img src=""> <em>Main Admin View</em>
+<img src=""> <em>Post View</em>
+<img src=""> <em>Users View</em>
 
 ### **_Post New Recipe_**
 
