@@ -45,7 +45,7 @@ The blog is aimed at anyone who enjoys cooking and is interested in trying a var
 <li>Recipes for Everyone</li>
 <li>Bookmark Recipe</li>
 <li>Recipe Page</li>
-<li>Liking</li>
+<li>Liking & Hearts</li>
 <li>Comments, Tips & Recommendations</li>
 <li>Contact Page</li>
 <li>Optimisation</li>
@@ -269,52 +269,85 @@ The admin page is a view that is provided by Django. I have decided to implement
 
 ### **_Post New Recipe_**
 
-- photo of post recipe button (only accessible/visible if admin)
-- purpose of it and what it does
+The 'Add New Recipe' is at the bottom of the about section and is only displayed of the user is an 'admin/superuser'. When clicked it will take the user directly to the 'Post New Recipe' page on the admin pannel. I included this as a quick and easy way to be able to add new recipes to the blog.
+
+<img src=""> <em>With Admin Logged on</em>
+<img src=""> <em>Without Admin Logged on</em>
 
 ### **_Recipe View_**
 
-- photo of homepage and when clicked on recipe
-- purpose and what it does
+On the homepage page all the recipes that are posted are displayed with the newest displaying first. The view is pagniated and once there is more than (3 or 6 EDIT THIS ONCE COMPLETED HOME PAGE) it will condense and a button will appear to go to the 'Next' or 'Prev' page.
+
+- Users can see the post itself with the finished photo of the recipe that the post is crating, with the author name displayed in the photo. If no photo is provided when adding the post, then a placeholder photo will be displayed instead.
+- The name of the recipe is displyed and this is what users will click on to go to the recipe post.
+- The date the recipe was posted on is displayed so that users can see when the recipe was posted on, as well as making it easy to order the recipes.
+- The total 'like' and 'heart' count is also displayed so that users can see the popularity of a recipe.
+
+<img src=""> <em>Recipe Homepage View</em>
 
 ### **_Recipes For Everyone_**
 
 - photo of homepage and when clicked on recipe
 - purpose and what it does
+- TO CREATE THIS SECTION!!!
 
 ### **_Bookmark Recipe_**
 
-- purpose and what it does
+The 'Bookmark Recipe' button allows users to easily add recipes they like to their profile so that they can go back to it at anytime, without the need to search for the recipe constantly. By clicking the button it will add the recipe to the profile page, and if it is already added, it will remove the recipe from the profile. This feature is only avaliable and visible to users that are logged into the blog.
+
+<img src=""> <em>Bookmark Recipe Button</em>
 
 ### **_Recipe Page_**
 
-- photo of this
-- purpose and what it does
+When a user clicks onto a recipe from the homepage, it will take them to a recipe page where they can view the ingredients and steps to create the recipe themselves.
 
-### **_Liking_**
+- There is a title box with the 'author', 'posted on' and 'edited on' dates, and a photo of the recipe.
+- On the main content of the page there is a 'Bookmark Recipe' button that will allow users who are logged in to save the recipe and add it to their profiles.
+- The main content for the recipe has different sections, which is all taken from the model created for the post (further information about the models can be found in the <a href="#models">Models</a> section.):
+  - There is an about section, which is essentially ehe excerpt for the recipe, that just contains some information about the recipe and just some thoughts and suggestions.
+  - The next 2 small sections are the 'Prep Time' and 'Cook Time' which lets users know how long it will take to prep for the recipe and how long it will take to cook/bake it.
+  - Then the next section contains the 'Ingredients' that will be needed to create the recipe. Some recipes also contain 'equipment needed' but this was added into the same section. This section was designed using an external library called Summernote (more on external libraries found <a href="#external-libraries">here</a>).
+  - The final section is the 'Steps' which list the instructions on creating the recipe. This section was also created using Summernote.
+- At the bottom of the main recipe content there is the 'Likes', 'Hearts', 'Comments' and 'Tips' count, as well as the ability to 'Like' and 'Heart' a post.
+- The bottom of the page has the 'Comment' and 'Tips and Recommendations' section where a user can leave a comment and tip/recommendation on the page. A user must be signed in to leave a comment and tip/recommendation, but they can view them being logged out. These sections were also created using models.
+  - As an 'admin/superuser' there is a button that appears that will take them directly to the manage sections for the 'comment' and 'tips' so that they can directly manage them.
 
-- photo of liking feature
-- users must be logged in to like
-- purpose of it
+<img src=""> <em>Recipe View</em>
+
+### **_Liking & Hearts_**
+
+The 'liking' and 'hearts' feature is something for users to interact with, to be able to react to a recipe. Users must be logged in to be able to react to a post. Once a user has liked or hearted (they can do both if they want) it will add a number count, which is displayed on the recipe page, as well as on the homepage. To unlike and unheart users just need to click the buttons again. This features makes the recipe posts more interactive for the users.
+
+<img src=""> <em>When Liked/Hearted</em>
+<img src=""> <em>When Logged out</em>
 
 ### **_Comments, Tips & Recommendations_**
 
-- photo of commenting, etc feature
-- users must be logged in to comment, etc
-- purpose of it
+Users have the ability to leave a 'comment' as well as a 'recommendation and tip' if they are logged in, and this will be displayed at the bottom of the recipe. This allows for user input as well as user suggestions. Any comments and tips/recommendations will be displayed with the most recent at the top, so it seems like a conversation is happening.
+
+Admins have the ability to see a 'Manage' button for each section so that they can remove any comments they they deem necessary.
+
+<img src=""> <em>Comment Area</em>
+<img src=""> <em>Tips & Recommendations Area</em>
 
 ### **_Contact Page_**
 
-- photo of contact page
-- email get sent to me using the js
-- photo of popup box (need to implement)
+The purpose of the contact page is so that users are able to send recipe suggestions to the owner. They will need to fill out a form, which users JavaScript to send to form back to the users email. Once the form has been submitted a popup box appears letting users know whether the request has been successful or not. The email then appears in my spare email box so that I can see what recipe ideas that users may have. The contact form uses an external feature called [Email JS](https://www.emailjs.com/), which will be discussed further in the <a href="#external-libraries">External Libraries</a> section.
+
+<img src=""> <em>Contact Page</em>
+<img src=""> <em>When Submitted</em>
 
 ### **_Optimisations_**
 
-- bootstrap classes have allowed for optimsing on different screen sizes
-- added some media queries on the css for some features
-- what features and how they get optimised
-- add photos for reference
+To help with optimisations foe the blog, I used the Bootstrap framework classes for styling CSS - as well as adding my own media queries in. Using Bootstrap classes have allowed for near complete optimisation when viewing on different screensizes/viewports which has been very helpful and useful during the creating of this project, as well as for the general design of the layout. By adding some media queries in, I also was able to change some of the CSS that I needed to function and optimise correctly for better responsiveness.
+
+- The nav bar becomes collapsed when it reaches certain dimensions to allow for a cleaner look.
+- The entire homepage also becomes more condensed the smaller the viewport is and then becomes more responsive for a better optimised view for users on smaller screens.
+- Each of the pages will also follow suite and become more responsive depending on the screensize
+
+<img src=""> <em>Nav Bar Collapse</em>
+<img src=""> <em>Homepage Optimised</em>
+<img src=""> <em>Recipe Page Optimised</em>
 
 ## **Django**
 
