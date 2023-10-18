@@ -59,6 +59,7 @@ The blog is aimed at anyone who enjoys cooking and is interested in trying a var
 <li>Views</li>
 <li>Forms</li>
 <li>URLs</li>
+<li>Settings</li>
 <li>Admin</li>
 </ul>
 </details>
@@ -304,9 +305,9 @@ When a user clicks onto a recipe from the homepage, it will take them to a recip
 - There is a title box with the 'author', 'posted on' and 'edited on' dates, and a photo of the recipe.
 - On the main content of the page there is a 'Bookmark Recipe' button that will allow users who are logged in to save the recipe and add it to their profiles.
 - The main content for the recipe has different sections, which is all taken from the model created for the post (further information about the models can be found in the <a href="#models">Models</a> section.):
-  - There is an about section, which is essentially ehe excerpt for the recipe, that just contains some information about the recipe and just some thoughts and suggestions.
+  - There is an about section, which is essentially the excerpt for the recipe, that just contains some information about the recipe and just some thoughts and suggestions. This section was designed using an external library called Summernote (more on external libraries found <a href="#external-libraries">here</a>).
   - The next 2 small sections are the 'Prep Time' and 'Cook Time' which lets users know how long it will take to prep for the recipe and how long it will take to cook/bake it.
-  - Then the next section contains the 'Ingredients' that will be needed to create the recipe. Some recipes also contain 'equipment needed' but this was added into the same section. This section was designed using an external library called Summernote (more on external libraries found <a href="#external-libraries">here</a>).
+  - Then the next section contains the 'Ingredients' that will be needed to create the recipe. Some recipes also contain 'equipment needed' but this was added into the same section. This section was designed using Summernote.
   - The final section is the 'Steps' which list the instructions on creating the recipe. This section was also created using Summernote.
 - At the bottom of the main recipe content there is the 'Likes', 'Hearts', 'Comments' and 'Tips' count, as well as the ability to 'Like' and 'Heart' a post.
 - The bottom of the page has the 'Comment' and 'Tips and Recommendations' section where a user can leave a comment and tip/recommendation on the page. A user must be signed in to leave a comment and tip/recommendation, but they can view them being logged out. These sections were also created using models.
@@ -323,7 +324,7 @@ The 'liking' and 'hearts' feature is something for users to interact with, to be
 
 ### **_Comments, Tips & Recommendations_**
 
-Users have the ability to leave a 'comment' as well as a 'recommendation and tip' if they are logged in, and this will be displayed at the bottom of the recipe. This allows for user input as well as user suggestions. Any comments and tips/recommendations will be displayed with the most recent at the top, so it seems like a conversation is happening.
+Users have the ability to leave a 'comment' as well as a 'recommendation and tip' if they are logged in, and this will be displayed at the bottom of the recipe. This allows for user input as well as user suggestions. Any comments and tips/recommendations will be displayed with the oldest at the top.
 
 Admins have the ability to see a 'Manage' button for each section so that they can remove any comments they they deem necessary.
 
@@ -351,31 +352,179 @@ To help with optimisations foe the blog, I used the Bootstrap framework classes 
 
 ## **Django**
 
-- intro into using django to create the application in more detail
+[Django](https://www.djangoproject.com/) is the framework I used to create my blog application. It is a Python-based framework which makes it easier to create web-based applications. There were several elements required in order to get my blog to function in the required way. I had to ensure that I used the CLI to install Django before starting my blog.
 
 ### **_External Libraries_**
 
-- further detail into the external libraries used in project and reason behind using them (poss add links?)
+There were several external libraries and frameworks I installed and used in the creation of my blog, alongside django. For some of these I needed to ensure I was using the CLI to install the libraries. Several of these external libraries needed to be added to the 'Requirements' file as well as added to the 'Settings', both which are further discussed the the <a href="#deployment">Deployment</a> section.
+
+- [Gunicorn](https://gunicorn.org/) as the web application to help host my blog when in deployment. For this to work I needed to use the CLI to install it at the beginning, after Django. This is also needed in the 'Requirements' and the 'Procfile'.
+- [Dj-database](https://pypi.org/project/dj-database-url/) to be able to use an 'environment variable' to configure my blog application. This also needed to be installed using the CLI. This needed to be modified in the 'Settings' file. This library was also added to the 'Requirements'
+- [Psycopg2](https://pypi.org/project/psycopg2/) which is the PostgresSQL database adapter needed for my project. This needed to be installed using the CLI. This library is needed in the 'Requirements'.
+- [ElephantSQL](https://www.elephantsql.com/) to store my database data, this needed to be added into the 'Env', 'Settings', and 'Config Vars'.
+- [Cloudinary](https://cloudinary.com/) to be able to store any media and static files for my blog, this needed to be updated in the 'Settings', as well as installed using the CLI, then added to the 'Requirements'.
+- [Summernote](https://summernote.org/) was another library I used in the 'Models' for WYSIWYG when adding the 'Ingredients' and 'Steps' for recipe. This library needed to be installed using the CLI and added to 'Requirements' and 'Settings'.
+- [Cripsyforms](https://django-crispy-forms.readthedocs.io/en/latest/) was another library I needed to install using the CLI, then adding to the 'Settings' and 'Requirements'. I used this for the commenting and tips/recommedation sections of the blog.
+- [Allauth](https://docs.allauth.org/en/latest/) was another library I used for the account registration, although I haven't implemented all the features included in this as of yet. I had to install this using the CLI and then add it to the 'Requirements' and 'Settings'. After this I needed to run a specific code to get the templates for the accounts installed onto my project.
+- [Whitenoise](https://whitenoise.readthedocs.io/en/latest/#quickstart-for-other-wsgi-apps) was another library I used for my project as initally I was having trouble with the CSS showing up on beta deployment, so installing this and adding to 'Requirements' and 'Settings' fixed that issue.
 
 ### **_Models_**
 
-- talk about each of the models implemented and reasons behind it
-- add photos of how it looks on the admin view?
+The models is the main base I used for creating the blog posts, comments and tips sections for the blog. Without implementing the models, the blog would not be functioning the way it should be.
+
+The Post Model:
+
+- This is the main model for the blog, where I add the recipes to the website.
+- There is a 'Status' const which allows th user to choose whether the post is still a draft (0) or posted (1) and ready to be published.
+- There are several fields in model that collerate to different areas and have different field types with different requirements.
+- When in the Admin View to post a new recipe all these fields are visible.
+- The 'recipe_name' field is for the name of the recipe which will be displayed on the Homepage and when viewing that particular recipe. The name of the recipe must be unique.
+- The 'slug' uses the name of the name of the recipe, this will create the URL for the recipe, and therefore must also be unique.
+- The 'written_by' field allows the user to choose who the author of the recipe is, most of the time it will be the admin posting the recipe. This has a cascade feature where the posts created by the user will be deleted if the user is deleted.
+- The 'recipe_image' field is a cloudinary field and allows users to upload a photo of the recipe. If this is left blank a placeholder image will be put in its place.
+- The 'edited_on' field shows the time and date the post was edited/updated on.
+- The 'excerpt' field is a text field that allows users to add an excerpt about the post. This field uses Summernote as a design feature. When viewing the post this section shows as the 'About'.
+- The 'prep_time' and 'cook_time' sections allow the poster to list how long it will take to prep and cook the recipe.
+- The 'ingredients' and 'recipe_steps' fields both use Summernote when adding text to them. These sections allow the poster to list the necessary ingredients and the steps required for the recipe.
+- The 'posted_on' field shows the date the post was initally created, and differs from the 'edited_on' field, as the 'posted_on' field will not update if the recipe is edited.
+- The 'status' field allows users to choose the status of the post, the default will be draft, and the poster wil need to select posted for the post to appear on the site.
+- The 'likes' and 'hearts' are ManyToMany fields which allows one user to like more than one post. This is the feature for users to like and heart on posts.
+- The 'bookmarks' is also ManyToMany field which allows one user to bookmark several posts. This feature allows users to save posts to their profile.
+- The 'Meta' class is used to sort the ordering out for the posts on what order they are to be displayed on. I have set it so that the newest posts are displayed first.
+- The 'str' function is to ensure that the name of the recipe is returned.
+- The final two functions is to ensure both the number of 'likes' and 'hearts' are displayed as a count.
+
+<img src=""> <em>Post Model</em>
+<img src=""> <em>Post Model in Admin View</em>
+
+The (RecipeForEveryone) Model:
+
+- TO DO THIS
+
+<img src=""> <em>RecipeForEveryone Model</em>
+<img src=""> <em>RecipeForEveryone Model in Admin View</em>
+
+The Comment and Tip Model:
+
+- This is the main models for the comment posts andtip posts for the blog.
+- It links to the Post and (RecipesForEveryone) model as a foreignkey and also has a cascade feature that is deleted if the Recipe is deleted.
+- The 'name' displays the users name on the comment and tips itself, as well as in the admin view for the comment and tips.
+- The 'email' will display only in the admin view if the user has an email added to their account.
+- The 'comment' and 'tip' field will be displayed on the recipe post in the comment and tip field, as well as in the admin view.
+- The 'posted_on' field will display the time and date when the comment and tip was made, showing on both the comment and tip section, and the admin view. This will display the comment and tips in order with the oldest displayed first.
+- Both models use the 'Meta' class of ordering to order the posts by the 'posted_on' order.
+- Both models also use the 'str' function so ensure they are returning the correct data when posted.
+
+<img src=""> <em>Comment Model</em>
+<img src=""> <em>Comment Model in Admin View</em>
+
+<img src=""> <em>Tip Model</em>
+<img src=""> <em>Tip Model in Admin View</em>
 
 ### **_Views_**
 
-- talk about each of the views implemented and reasons behind it
-- add photos of how it looks?
+There are several views included in my blog, and the views are what are used to get aspects of my blog rendered and displayed on the page. I have used a mix of class-based and function-based views for the blog for different features.
+
+PostList View:
+
+- This is the main view that renders the homepage using the Post model. I used a class-based view to create this.
+- It uses the Post model as the main model while using a query set to only grab the recipes that have the published status as well as ordering the recipes by '-posted_on' show it displays with the newest first.
+- It then uses the 'index.html' template to render to the view to that page.
+- It finally paginates the page by (CHOOSE THE NUMBER) to display that many posts.
+- The content required is then added to the HTML file to ensure it is displaying correctly.
+
+<img src=""> <em>PostList View</em>
+
+ViewRecipe View:
+
+- This is the main view for viewing the recipes when clicking on the post itself. There are several asects to this view in order to get it to function correctly. I also used a class-based view for the ViewRecipe view.
+- The first section was the 'get' function which allows users to click on the post and for the page to render and load with the recipe post itself, showing all the necessary features. There is a lot of data here that needed to be added in order for the view to display all the sections required.
+- This then renders the view from the 'get' function and shows the recipe post itself.
+- The next part of this view was the 'post' function, which allowed users to leave comments and tips on the post. The 'post' function follows the same format as the 'get' function but there are two extra sections added which pulls details through from the forms.
+- The 'comment_form' allows users to be able to post a comment and the 'tip_form' allows users to post a tip.
+- The 'return render' follows the same method as the 'get' function to render the view of the page again once a comment or a tip has been left.
+
+<img src=""> <em>ViewRecipe View</em>
+
+PostLike and PostHeart Views:
+
+- Both of these views are the the 'liking' and 'hearting' feature. They were also created using class-based views.
+- These ware pretty simple and both follow the same code inside, apart from the naming changing depending on whether it is a like or heart.
+- If the user exists and they have already liked/hearted a post, clicking again will remove it, but if it doesn't it will add a heart or like.
+- The page will then reload.
+
+<img src=""> <em>PostLike & PostHeart View</em>
+
+Contact_page View:
+
+- This is a function-based view that will render the contact form page when a user clicks the 'contact page' button
+
+My_profile View: (POSS EDIT)
+
+- This is a function-based view thay will render the profile page when a user clicks the nav bar link that will take users to 'My Profile'
+
+Add_bookmark View: (POSS EDIT)
+
+- This is a function-based view that allows users to add a recipe to their bookmarks. It works in a similar way to the 'PostLike' and 'PostHeart' views...
+
+Add_recipe View:
+
+- This is a function-based view that allows admins to go directly to the 'Add' new recipe page from the admin panel as a quick and easy way to access it.
+
+Manage_comments and manage_tips View:
+
+- These are both function-based views that allow admins to oo directly to the 'Manage' sections for either the comments or the tips in the admin panel.
+
+SearchRecipe View:
+
+- This is class-based view that allows users to search for a recipe using the search bar.
+- It uses the Post model and then when an item has been searched it will render a page displaying the results.
+- This view uses a queryset function in order to formulate the search correctly, and users can search for posts by the 'recipe name' or 'ingredients'.
+
+<img src=""> <em>SearchRecipe View</em>
 
 ### **_Forms_**
 
-- talk about each of the forms implemented and reasons behind it
-- add photos of how it looks?
+There are two forms that have been implemented into the blog, these are the 'Comment' and 'Tip' forms which are used to leave comments and tips on the recipe posts. When using these forms on the HTML pagesm I had to ensure I was using the tags from the external library I installed for forms, known as CrispyForms.
+
+- The 'CommentForm' uses the Comment model and only uses the 'comment' field so that users can write a comment on the recipe post.
+- The 'TipForm' uses the Tip model and only uses the 'tip' field so that users can write a tip on the recipe post.
+
+<img src=""> <em>Forms</em>
 
 ### **_URLs_**
 
 - talk about each of the url pattern files implemented and reasons behind it
 - add photos of how it looks?
+
+There are two different URL pattern pages for the blog, the one that is in the main blog directory, and the file that is also in the same directory as the settings. I used both to create URL patterns for my blog to make it functional.
+
+URLs in the cookbook directory:
+
+- This is where the URL for the admin page was added and installed so that the admin/superuser can access the admin view, and so that I was able to create a direct link to the admin page.
+- I installed the Summernote url here as well, as this was required in order to use Summernote and have it displayed in my blog.
+- I also had to include the URL path to ensure that all the URL patterns from the 'recipe_site' were also included.
+- I finally also had to include a URL pattern for the accounts side including the 'allauth' library that I installed.
+- At the bottom of the URL patterns I also included a piece of code from Summernote so that it will display when deployed.
+
+<img src=""> <em>Cookbook URL Patterns</em>
+
+URLs in the recipe_site directory: (ADD THE NEW VIEW)
+
+- These URL patterns are made using the views that were created for the blog. There is a mix of class-based and function-based view URL patterns, depending on how the view was set up.
+- The first URL is the main URL which displays the homepage.
+- The 'view_recipe' URL will take the user to the recipe page that they clicked on, and the main way this is viewed is by using the 'slug' to render the URL name, so that each page is unique.
+- Both the 'post_like' and 'post_heart' allows the users to like and heart a post and will then refresh the page with the post having these likes/hearts displaying.
+- The 'add_bookmark' URL allows users to be able to add a bookmark and this bookmark will then appear in their profile, dispite the page reloading back to the recipe.
+- The 'contact' URL will take users to the contact page.
+- The 'search_recipes' URL will take users to the search results page after they have performed a search using the search bar.
+- The 'add_recipe', 'manage_comments' and 'manage_tips' URLs will take the admin to the link that they clicked on with ease on the admin panel, rather than having to go through the main admin panel each time.
+
+<img src=""> <em>Recipe_site URL Patterns</em>
+
+### **_Settings_**
+
+- talk about having to edit and update the settings
 
 ### **_Admin_**
 
@@ -420,7 +569,7 @@ To help with optimisations foe the blog, I used the Bootstrap framework classes 
 
 ### **_Heroku_**
 
-- steps taken to deploy to heroku
+- steps taken to deploy to heroku, config vars
 - add photos
 
 ### **_Django_**
