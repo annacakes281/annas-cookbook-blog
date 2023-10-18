@@ -29,12 +29,17 @@
 
 <div class="container">
     <div class="row">
-        <div id="bookmark-bar">
-            {% if user.is_authenticated %}
-            <a href="{% url 'add_bookmark' post.id %}" class="btn btn-bookmark">Bookmark Recipe</a>
-            <!-- bookmark- bug where no reverse match, but gets added to bookmarks-->
-            {% endif %}
-        </div>
+            <div id="bookmark-bar">
+                {% if user.is_authenticated %}
+                <a href="{% url 'add_bookmark' post.id %}" class="btn btn-bookmark">Bookmark Recipe</a>
+                <!-- bookmark- bug where no reverse match, but gets added to bookmarks-->
+                {% endif %}
+            </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
 
         <div class="col card mb-4 mt-3 left top">
             <div class="card-body recipe-body">

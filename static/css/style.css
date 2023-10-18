@@ -122,6 +122,11 @@ nav {
     font-family: Rubik, sans-serif;
 }
 
+.about-title {
+    font-family: Dosis, sans-serif;
+    margin-top: 2%;
+}
+
 /* recipe view */
 
 .masthead {
@@ -230,10 +235,15 @@ nav {
     background-color: #cc7edb;
 }
 
-.btn-manage,
+.btn-manage {
+    background-color: #ba9de2;
+    font-family: Rubik, sans-serif;
+}
+
 .btn-bookmark {
     background-color: #ba9de2;
     font-family: Rubik, sans-serif;
+    position: sticky;
 }
 
 .btn-bookmark:hover {
@@ -289,7 +299,17 @@ nav {
     color: transparent;
 }
 
-/* media queries - check these after the format!! */
+/* media queries */
+
+@media screen and (max-width:1065px) {
+    .nav-item {
+        font-size: 14px;
+    }
+
+    .navbar-text {
+        font-size: 13px;
+    }
+}
 
 @media screen and (max-width:995px) {
     .commentform {
@@ -308,12 +328,6 @@ nav {
     }
 }
 
-@media screen and (max-width:767px) {
-    .masthead {
-        margin-bottom: -10%;
-    }
-}
-
 @media screen and (max-width:760px) {
     .post-title {
         margin-top: 10%;
@@ -325,15 +339,21 @@ nav {
 
 }
 
-@media screen and (max-width:630px) {
+@media screen and (max-width:767px) {
     .masthead {
-        margin-bottom: -12%;
+        margin-bottom: -10%;
     }
 }
 
-@media screen and (max-width:470px) {
+@media screen and (max-width:540px) {
     .masthead {
-        margin-bottom: -18%;
+        margin-bottom: -14%;
+    }
+}
+
+@media screen and (max-width:400px) {
+    .masthead {
+        margin-bottom: -24%;
     }
 }
 
