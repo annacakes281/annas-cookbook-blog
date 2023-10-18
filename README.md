@@ -78,8 +78,8 @@ The blog is aimed at anyone who enjoys cooking and is interested in trying a var
 <summary><a href="#deployment">Deployment</a></summary>
 <ul>
 <li>Beta Testing</li>
+<li>Django Deployment</li>
 <li>Heroku</li>
-<li>Django</li>
 </ul>
 </details>
 <details>
@@ -367,10 +367,11 @@ There were several external libraries and frameworks I installed and used in the
 - [Cripsyforms](https://django-crispy-forms.readthedocs.io/en/latest/) was another library I needed to install using the CLI, then adding to the 'Settings' and 'Requirements'. I used this for the commenting and tips/recommedation sections of the blog.
 - [Allauth](https://docs.allauth.org/en/latest/) was another library I used for the account registration, although I haven't implemented all the features included in this as of yet. I had to install this using the CLI and then add it to the 'Requirements' and 'Settings'. After this I needed to run a specific code to get the templates for the accounts installed onto my project.
 - [Whitenoise](https://whitenoise.readthedocs.io/en/latest/#quickstart-for-other-wsgi-apps) was another library I used for my project as initally I was having trouble with the CSS showing up on beta deployment, so installing this and adding to 'Requirements' and 'Settings' fixed that issue.
+- [EmailJS](https://www.emailjs.com/) was an external website I used to source and store emails for the site, so that users are able to send emails via the contact form. I had to create a template on the EmailJS website and ensure it was all linked up correctly in the javascript and the contact page.
 
 ### **_Models_**
 
-The models is the main base I used for creating the blog posts, comments and tips sections for the blog. Without implementing the models, the blog would not be functioning the way it should be.
+The models is the main base I used for creating the blog posts, comments and tips sections for the blog. Without implementing the models, the blog would not be functioning the way it should be. After afding or updating each model, I needed to ensure that I was migrating the data.
 
 The Post Model:
 
@@ -494,9 +495,6 @@ There are two forms that have been implemented into the blog, these are the 'Com
 
 ### **_URLs_**
 
-- talk about each of the url pattern files implemented and reasons behind it
-- add photos of how it looks?
-
 There are two different URL pattern pages for the blog, the one that is in the main blog directory, and the file that is also in the same directory as the settings. I used both to create URL patterns for my blog to make it functional.
 
 URLs in the cookbook directory:
@@ -524,76 +522,162 @@ URLs in the recipe_site directory: (ADD THE NEW VIEW)
 
 ### **_Settings_**
 
-- talk about having to edit and update the settings
+The 'Settings' are what were need for the 'cookbook' blog project. This file contains all the various settings requried for the blog to run. Throughout the project there were several settings that I had updated and changed to ensure the blog would run smoothly in development as well as when deployed.
+
+- One of the changes I made was importing some extra modules into the settings, including the 'dj_database' external library that I used, as well as the 'env' file with secure data needed.
+- I had to add a 'templates_dir' const so that the settings knows to look inside the templates directory for the HTML pages.
+- I had to ensure that the 'secret_key' was hidden for final production, therefore I created this variable in the 'env' file as well as set it in the 'config vars' on Heroku so that regular users are not able to view this.
+- In order for Summernote to run in deployment, I had to add the 'x_frame_options' const into the settings.
+- In final production 'debug' has been set to false (EDIT THIS ONCE ONCE ENVIRONMENT SETTINGS BEEN ADDED).
+- To allow the blog to display in the browser, I needed to ensure I added the development URL, the localhost as well as the deployment URL into the 'allowed_hosts' const.
+- To prevent any errors during login and registration I needed to add the 'account_email_verification' const and set it to 'none' as this is not required.
+- There were several extra apps I needed to add into the 'installed_apps' const to ensure the external libraries I had installed using the CLI would function correctly.
+- A 'site_id' of 1 also needed to be added into the settings.
+- In order for 'allauth' to redirect users back to the homepage after registering/logging in and logging out, I needed to add the homepage as a redirect url as a const var.
+- So that 'cripsyforms' functioned correctly I needed to specify a template pack, which was 'bootstrap4' as this is the latest version that cripsyforms is running.
+- I needed to add an exra line into the 'middleware' const var for allauth to function correctly, without it, the page would not load.
+- In the 'dirs' section of the dictionary I needed to add the 'template_dir' const so that it would link to the templates to display the HTML pages.
+- ADD DATABASE SECTION ONCE ENVIRONMENT SECTION DONE FOR DEPLOYMENT
+- I had to add the settings in order to get the static and media files to work correctly, and where they can be found in the directory. I also added where the media files would be stored, which is the cloudinary storage platform.
 
 ### **_Admin_**
 
-- talk about the admin view files and reasons behind it
-- add photos of how it looks?
+The 'admin' file has some settings that are required for the admin page view. It allows the users navigate easily on each of the models.
+
+PostAdmin:
+
+- This takes the 'summernote model admin' as a parameter, as this will use summernote in three of the fields for the display.
+- The 'list_display' shows the admin all the posts on the blog with the headings of 'recipe name', 'slug', 'status' and 'posted on'.
+- The admin can search for specific recipes by either the recipe name or the ingredients in the provided search bar.
+- The 'prepopulated_fields' allows or whatever the 'recipe name' is to convert into a slug, without the admin having to type this in again. This makes it more easy and convienient.
+- The 'list_filter' allows admins to filter posts by either 'status' or 'posted on' dates.
+- The 'summernote_fields' shows which fields in the recipe post require the summernote WYSIWYG to appear.
+
+<img src=""> <em>PostAdmin</em>
+
+CommentAdmin and TipAdmin:
+
+- These admin views both just use their respective models for in order to view the comments and tips.
+- Admins are able to see the 'list_display' with the headings of 'name', 'comment/tip', 'post' (for which post the comment or tip was created on) and 'posted on'.
+- Admins are able to search for comments and tips by the 'name', 'email' (if known) and the 'commen' or 'tip' content.
+- The 'list_filter' allows the admin to filter comments or tips by the 'name' of the user or the 'posted on' date.
+
+<img src=""> <em>CommentAdmin & TipAdmin</em>
+
+FINAL MODEL: TO DO
+
+<img src=""> <em>to add</em>
 
 ## **Testing**
 
-- into into the testing section and eachof the tests carried out for the project
+For the project I done several testing to ensure that it was functioning the way it was intended to. As well as manual testing, I used testing with Django to test the models, views and forms.
 
 ### **_HTML & CSS Testing_**
 
-- the html and css testing tool to check code is correct (add photos)
+Although it was not necessary to use the validator for HTML, as there was pythonic code in the HTML, I decided to check it anyway to ensure that the standard HTML that I used was correct across the pages. I still thought it was good practise to ensure my HTML was correct. Apart from the errors caused the pythonic code in the HTML code there were no significant errors with the HTML.
+
+Although using the CSS validator was also not necessary, I still decided to use it for good practice purposes. There were no errors found in the CSS for the blog.
+
+<em>CSS validator results</em> <img src="readme_images/css_results.jpg">
 
 ### **_Python Testing_**
 
-- PEP8 python tester (add photos)
+Despite there being a built-in linter (which I also used for checking issues and problems with the code), I also used a [Python Checker](https://www.pythonchecker.com/) to check my python code. This all came back pretty high and correct without any issues and bugs.
 
 ### **_Django Testing_**
 
-- using the testing unicode to test the models, views, forms, javascript (still need to finish and do)
+- using the testing unicode to test the models, views, forms, javascript (still need to finish and do) TO DO THIS TYPE OF TESTING
 
 ### **_Manual Testing_**
 
-- manual testing of clicking and checking everything works myself without errors (only issue so far is contact form on mobile not sending emails)
+Throughout the project I performed manual testing on each of the features added during each stage to ensure that it all functions correctly. I once again done some more manual testing in deployment to ensure that it all still works when deployed as well. I also tested on my mobile to see if it all works correctly.
+
+- The only issue I noticed on mobile was when using the contact form, it would say 'message failed to send' popup box from the JavaScript, despite an email still pulling through. This is a bug that should be fixed before the final deploument. CHECK IF THIS IS FIXED BEFORE SUBMISSION
 
 ### **_Built-in Linter_**
 
 - errors from the built-in linter that show up that are related to code, and whether they are necessary
 
+Using the built-in linter, the only issues that came up were non-important ones... ADD THIS SECTION WHEN CHECKING THE LINTER
+
 ### **_Unfixed Bugs_**
 
-- any unfixed bugs and why they werent addressed
+DO THIS SECTION AT THE END BEFORE SUBMISSION
 
 ## **Deployment**
 
-- intro into deployment for the project
+This section will discuss all the steps in the deployment process, as well as the beta testing deployment that I carried out throughout the project. I have also discussed the steps I on Django before deploying to Heroku.
 
 ### **_Beta Testing_**
 
-- done some beta testing throughout milestones to check content working the way it is needed
+Throughout the project, I had beta test milestones, where I planned to deploy the projecto to test how it would function when live. The reason I done this was to ensure that once I added in main features that it would still function correctly upon deployment. I did need to ensure some certain steps were taken in order for deployment to work in <a href="#django-deployment">Django</a> and <a href="#heroku">Heroku</a> (discussed in those sections).
+
+### **_Django Deployment_**
+
+There were a few steps needed to be done in Django areas itself before deployment. This included updating the settings, requirements and creating a env and Procfile.
+
+Settings:
+
+- TO ADD BEFORE DEPLOYMENT
+
+Env:
+
+- This file is added to the .gitignore as it contains sensitive information.
+- I have the 'database_url' stored in here that has the link to the elephantsql database that I have been using, and so that it remains hidden.
+- My secret key is also stored in here, so that it remains hidden.
+- My 'cloudinary_url' is also stored in here to ensure it remains hidden, as well as has the url to my cloudinary server.
+
+Requirements:
+
+- After installing external libraries to Django, I had to add them to my requirements in order for them to work on deployment.
+- This was easily done in the CLI using the line: 'pip3 freeze --local > requirements.txt'.
+
+Procfile:
+
+- The Procfile tells Heroku what type of application the blog is and what library to run. In the case of the blog, it will be running 'gunicorn' as a 'web' application using 'wsgi'.
 
 ### **_Heroku_**
 
 - steps taken to deploy to heroku, config vars
 - add photos
-
-### **_Django_**
-
-- what steps in django needed to deploy (settings, env, requirements)
+- DO THIS FOR FINAL DEPLOYMENT
 
 ## **Credits**
 
-- intro into section
+This section will contain all the sources I would like to credit that I used in order to help create my blog project.
 
 ### **_Content_**
 
-- external content sources used to help with project
-- codestar (include videos/source code)
-- <https://forum.djangoproject.com/t/creating-a-button-for-the-admin-page/15147>
-  <https://stackoverflow.com/questions/11916297/django-detect-admin-login-in-view-or-template>
-  <https://stackoverflow.com/questions/35557129/css-not-loading-wrong-mime-type-django>
-  <https://devmaesters.com/blog/34>
-  <https://learndjango.com/tutorials/django-search-tutorial>
-  https://stackoverflow.com/questions/59811002/display-search-bar-and-search-button-inline-with-css
-  <https://www.youtube.com/watch?v=H4QPHLmsZMU>
-  (format these properly)
+<https://www.youtube.com/watch?v=H4QPHLmsZMU>
+(format these properly)
+
 - mentor suggestions for whitenoise and summernote pages
+
+- The Code Instite Codestar blog tutorial. I mainly used this to help create the basis for my blog and then expand my idea
+
+  - Source code for [CodeStar](https://github.com/Code-Institute-Solutions/Django3blog/tree/master) blog.
+
+- To help create the nav bar link to gain access to the admin view, I looked at the follow forum for [Creating a Button for Django Admin](https://forum.djangoproject.com/t/creating-a-button-for-the-admin-page/15147).
+
+- I used the following page to check whether a user was a [superuser](https://stackoverflow.com/questions/11916297/django-detect-admin-login-in-view-or-template) so that only admins can view certain aspects of a page.
+
+- I was having trouble getting my JavaScript to load in production and there being a MIME type error in the console, there follow using the following page about [CSS not loading](https://stackoverflow.com/questions/35557129/css-not-loading-wrong-mime-type-django), I was able to get the JavaScript to load.
+
+- My mentor suggested using [Whitenoise](https://devmaesters.com/blog/34) as my static files were not loading upon deployment, and I used the page to help install it correctly.
+
+- To help create my search bar I followed the steps in the [Django Search Tutorial](https://learndjango.com/tutorials/django-search-tutorial).
+
+- I was struggling to get my search button to display inline with my search bar, so I used the page about [Display search bar](https://stackoverflow.com/questions/59811002/display-search-bar-and-search-button-inline-with-css) and button inline with css, to help fix this.
+
+- To help create my bookmark feature, I watched a video by Very Academy about [Creating a User Bookmark](https://www.youtube.com/watch?v=H4QPHLmsZMU)
+  - [Source code](https://github.com/veryacademy/YT-Django-Simple-Blog-App-Part10-User-Favourties-Save) for the video.
 
 ### **_Images_**
 
-- adobe stock photos for placeholder image (update the placeholder image)
+- The placeholder image I used was taken from [Adobe Stock Photos](https://stock.adobe.com/)
+
+  - [Image link](https://stock.adobe.com/uk/265582946).
+
+- Images used on the recipes are my own images that I have taken myself.
+
+- ADD IF USING ANYMORE EXTERNAL IMAGES

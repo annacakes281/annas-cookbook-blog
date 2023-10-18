@@ -161,7 +161,7 @@ nav {
 .post-title {
     margin-top: 10%;
     margin-left: 5%;
-    font-family: Indie Flower, cursive, sans-serif;
+    font-family: 'Indie Flower', cursive, sans-serif;
     font-weight: bolder;
 }
 
@@ -183,7 +183,7 @@ nav {
 }
 
 .recipe-headings {
-    font-family: Indie Flower, cursive, sans-serif;
+    font-family: 'Indie Flower', cursive, sans-serif;
     font-weight: bolder;
     font-size: 23px;
 }
