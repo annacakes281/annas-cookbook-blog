@@ -159,7 +159,7 @@
         <div class="col-md-8 card mb-4 mt-3">
             <h3 class="comment-sect">Tips and Recommendations:</h3>
             <div>
-            {% if user.is_authenticated %}
+            {% if user.is_superuser %}
             <a href="{% url 'manage_tips' %}" class="btn btn-manage">Manage Tips & Recommendations</a>
             {% endif %}
             </div>
