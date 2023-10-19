@@ -33,7 +33,7 @@ class ViewRecipe(View):
             {
                 "post": post,
                 "comments": comments,
-                "commented": True,  # change to false if have approval
+                "commented": True,
                 "tips": tips,
                 "tipped": True,
                 "liked": liked,
@@ -125,7 +125,6 @@ def contact_page(request):
 def my_profile(request):
     recipe = Post.objects.filter(bookmarks=request.user)
     drinks = Drink.objects.filter(bookmarks=request.user)
-    paginate_by = 3
     return render(request, 'my_profile.html', {'recipe': recipe, 'drinks': drinks})
 
 
