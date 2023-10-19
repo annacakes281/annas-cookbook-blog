@@ -19,6 +19,15 @@
           </li>
           {% endfor %}
         </ul>
+        <ul class="search-results">
+            {% for drink in drink_list %}
+            <li>
+                <a href="{% url 'view_drink' drink.slug %}" class="post-link">
+                    <h2 class="card-title search-results">{{ drink.drink_name }}</h2>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
       </div>
     </div>
   </div>

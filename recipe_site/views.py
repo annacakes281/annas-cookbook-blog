@@ -154,7 +154,7 @@ def manage_tips(request):
 
 
 class SearchRecipes(generic.ListView):
-    model = Post
+    model = Post, Drink
     template_name = 'search_recipes.html'
 
     def get_queryset(self):
@@ -162,12 +162,16 @@ class SearchRecipes(generic.ListView):
         post_list = Post.objects.filter(
             Q(recipe_name__icontains=query) | Q(ingredients__icontains=query)
         )
-        return post_list
+        drink_list = Drink.objects.filter(
+            Q(drink_name__icontains=query) | Q(ingredients__icontains=query)
+        )
+        return post_list or drink_list
 
 
 class DrinkList(generic.ListView):
     model = Drink
-    queryset = Drink.objects.filter(category=1).order_by("-posted_on")
+    queryset = Drink.objects.filter(category=1).exclude(
+        status=0).order_by("-posted_on")
     template_name = 'drinks.html'
     paginate_by = 6
 
@@ -236,6 +240,7 @@ class AddDrinkBoomark(View):
 
 class SauceList(generic.ListView):
     model = Post
-    queryset = Post.objects.filter(category=2).order_by("-posted_on")
+    queryset = Post.objects.filter(category=2).exclude(
+        status=0).order_by("-posted_on")
     template_name = 'sauces.html'
     paginate_by = 6

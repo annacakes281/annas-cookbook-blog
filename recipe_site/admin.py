@@ -7,7 +7,7 @@ from .models import Post, Comment, Tip, Drink
 class PostAdmin(SummernoteModelAdmin):
     # can view and search posts in the admin view
 
-    list_display = ('recipe_name', 'slug', 'status', 'posted_on')
+    list_display = ('recipe_name', 'slug', 'status', 'category', 'posted_on')
     search_fields = ['recipe_name', 'ingredients']
     prepopulated_fields = {'slug': ('recipe_name', )}
     list_filter = ('status', 'posted_on')
@@ -36,7 +36,7 @@ class TipAdmin(admin.ModelAdmin):
 class DrinkAdmin(SummernoteModelAdmin):
     # can view and search drinks in the admin view
 
-    list_display = ('drink_name', 'slug', 'status', 'posted_on')
+    list_display = ('drink_name', 'slug', 'status', 'category', 'posted_on')
     search_fields = ['drink_name', 'ingredients']
     prepopulated_fields = {'slug': ('drink_name', )}
     list_filter = ('status', 'posted_on')
