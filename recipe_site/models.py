@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 
 STATUS = ((0, "Draft"), (1, "Posted"))
-CATEGORY = ((0, "Drinks"), (1, "AirFryer"))
+CATEGORY = ((0, "None"), (1, "Drinks"), (2, "Sauces"))
 
 
 class Post(models.Model):
@@ -21,6 +21,7 @@ class Post(models.Model):
     recipe_steps = models.TextField()
     posted_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
+    category = models.IntegerField(choices=CATEGORY, default=0)
     likes = models.ManyToManyField(
         User, related_name='recipe_likes', blank=True)
     hearts = models.ManyToManyField(
@@ -87,7 +88,7 @@ class Drink(models.Model):
     drink_steps = models.TextField()
     posted_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
-    category = models.IntegerField(choices=CATEGORY, default=0)
+    category = models.IntegerField(choices=CATEGORY, default=1)
     likes = models.ManyToManyField(
         User, related_name='drink_likes', blank=True)
     hearts = models.ManyToManyField(

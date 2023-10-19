@@ -2,15 +2,10 @@
 
 <div class="container-fluid">
     <div class="row">
-        <h1 class="text-center about-title">About Anna's Cookbook</h1>
+        <h1 class="text-center about-title">Sauces</h1>
         <hr class="hr-trans">
         <p class="text-center" id="about">
-        Welcome to my little cookbook recipe type blog! <br>
-        I post all types of different recipes, some are things I've found online
-        and have made with some of my own additions, some are things I've just
-        gotten creative with!<br>
-        I hope you enjoy! Feel free to leave me any feedback, or send me recipe
-        ideas of your own for me to try!
+        Sauces
         </p>
         <div class="text-center">
             {% if user.is_superuser %}
@@ -81,26 +76,5 @@
     </nav>
     {% endif %}
 </div>
-
-
-<div class="row">
-    <h1 class="text-center about-title">Recipes For Everyone</h1>
-    <hr class="hr-trans">
-    <p class="text-center" id="about">
-            Select...
-    </p>
-
-    <div class="text-center">
-        <p class="text-center">Drinks</p>
-        <a href="{% url 'view_drink_page' %}"><img src="https://as1.ftcdn.net/v2/jpg/06/17/39/64/1000_F_617396487_8IgWTyb6JIeSoqTVpl0NXT3lW0JyBWOh.jpg" 
-            alt="" class="img-link"></a>
-
-        <p class="text-center">Sauces</p>
-        <a href="{% url 'view_sauces_page' %}"><img
-                src="https://as1.ftcdn.net/v2/jpg/06/17/39/64/1000_F_617396487_8IgWTyb6JIeSoqTVpl0NXT3lW0JyBWOh.jpg" alt=""
-                class="img-link"></a>
-    </div> 
-</div>
-
 
 {% endblock %}

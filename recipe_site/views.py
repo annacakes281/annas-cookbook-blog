@@ -167,7 +167,7 @@ class SearchRecipes(generic.ListView):
 
 class DrinkList(generic.ListView):
     model = Drink
-    queryset = Drink.objects.filter(category=0).order_by("-posted_on")
+    queryset = Drink.objects.filter(category=1).order_by("-posted_on")
     template_name = 'drinks.html'
     paginate_by = 6
 
@@ -175,7 +175,7 @@ class DrinkList(generic.ListView):
 class ViewDrink(View):
 
     def get(self, request, slug, *args, **kwargs):
-        queryset = Drink.objects.filter(category=0)
+        queryset = Drink.objects.filter(category=1)
         drink = get_object_or_404(queryset, slug=slug)
         liked = False
         hearted = False
@@ -232,3 +232,10 @@ class AddDrinkBoomark(View):
             drink.bookmarks.add(request.user)
 
         return HttpResponseRedirect(reverse('view_drink', args=[slug]))
+
+
+class SauceList(generic.ListView):
+    model = Post
+    queryset = Post.objects.filter(category=2).order_by("-posted_on")
+    template_name = 'sauces.html'
+    paginate_by = 6
