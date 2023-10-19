@@ -123,8 +123,9 @@ def contact_page(request):
 
 
 def my_profile(request):
-    new = Post.objects.filter(bookmarks=request.user)
-    return render(request, 'my_profile.html', {'new': new})
+    recipe = Post.objects.filter(bookmarks=request.user)
+    drinks = Drink.objects.filter(bookmarks=request.user)
+    return render(request, 'my_profile.html', {'recipe': recipe, 'drinks': drinks})
 
 
 class AddBoomark(View):
@@ -216,5 +217,18 @@ class DrinkHeart(View):
             drink.hearts.remove(request.user)
         else:
             drink.hearts.add(request.user)
+
+        return HttpResponseRedirect(reverse('view_drink', args=[slug]))
+
+
+class AddDrinkBoomark(View):
+
+    def post(self, request, slug, *args, **kwargs):
+        drink = get_object_or_404(Drink, slug=slug)
+
+        if drink.bookmarks.filter(id=request.user.id).exists():
+            drink.bookmarks.remove(request.user)
+        else:
+            drink.bookmarks.add(request.user)
 
         return HttpResponseRedirect(reverse('view_drink', args=[slug]))

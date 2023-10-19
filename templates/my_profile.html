@@ -9,7 +9,7 @@
         </p>
     </div>
 
-    {% for post in new %}
+    {% for post in recipe %}
     <div class="col-md-4">
         <div class="card mb-4">
             <div class="card-body">
@@ -27,6 +27,30 @@
 
                 <a href="{% url 'view_recipe' post.slug %}" class="post-link">
                     <h2 class="card-title recipe-title">{{ post.recipe_name }}</h2></a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+    {% for drink in drinks %}
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="image-container">
+                    {% if "placeholder" in drink.drinks_image.url %}
+                    <img class="card-img-top"
+                        src="https://as2.ftcdn.net/v2/jpg/01/07/93/25/1000_F_107932517_bRTDt5PCP4mOxlnsifzR6kXxkR3xi8QA.jpg">
+                    {% else %}
+                    <img class="card-img-top" src=" {{ drink.drinks_image.url }}">
+                    {% endif %}
+                    <div class="image-flash">
+                        <p class="author">Author: {{ drink.written_by }}</p>
+                    </div>
+                </div>
+    
+                <a href="{% url 'view_drink' drink.slug %}" class="post-link">
+                    <h2 class="card-title recipe-title">{{ drink.drink_name }}</h2>
+                </a>
             </div>
         </div>
     </div>

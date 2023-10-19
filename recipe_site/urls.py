@@ -20,4 +20,5 @@ urlpatterns = [
     path('view-drink/<slug:slug>/', views.ViewDrink.as_view(), name='view_drink'),
     path('drink-like/<slug:slug>', views.DrinkLike.as_view(), name='drink_like'),
     path('drink-heart/<slug:slug>', views.DrinkHeart.as_view(), name='drink_heart'),
+    path('drink-bookmark/<slug:slug>', views.AddDrinkBoomark.as_view(), name='add_drink_bookmark'),
 ]
