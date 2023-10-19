@@ -23,4 +23,5 @@ urlpatterns = [
     path('drink-bookmark/<slug:slug>',
          views.AddDrinkBoomark.as_view(), name='add_drink_bookmark'),
     path('sauces/', views.SauceList.as_view(), name='view_sauces_page'),
+    path('admin/recipe_site/drink/add/', views.add_drink, name='add_drink'),
 ]

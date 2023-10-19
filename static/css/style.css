@@ -128,10 +128,24 @@ nav {
 }
 
 .img-link {
-    height: 75%;
     width: 25%;
 }
 
+#categories>li {
+    display: inline;
+}
+
+#center-categories {
+    text-align: center;
+}
+
+#drinks {
+    margin-right: 5%;
+}
+
+#sauces {
+    margin-left: 5%;
+}
 
 /* recipe view */
 

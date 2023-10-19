@@ -244,3 +244,7 @@ class SauceList(generic.ListView):
         status=0).order_by("-posted_on")
     template_name = 'sauces.html'
     paginate_by = 6
+
+
+def add_drink(request):
+    return HttpResponseRedirect(reverse('add_drink'))

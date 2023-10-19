@@ -87,19 +87,23 @@
     <h1 class="text-center about-title">Recipes For Everyone</h1>
     <hr class="hr-trans">
     <p class="text-center" id="about">
-            Select...
+            Select the category you want to view.
     </p>
 
-    <div class="text-center">
-        <p class="text-center">Drinks</p>
-        <a href="{% url 'view_drink_page' %}"><img src="https://as1.ftcdn.net/v2/jpg/06/17/39/64/1000_F_617396487_8IgWTyb6JIeSoqTVpl0NXT3lW0JyBWOh.jpg" 
-            alt="" class="img-link"></a>
-
-        <p class="text-center">Sauces</p>
-        <a href="{% url 'view_sauces_page' %}"><img
-                src="https://as1.ftcdn.net/v2/jpg/06/17/39/64/1000_F_617396487_8IgWTyb6JIeSoqTVpl0NXT3lW0JyBWOh.jpg" alt=""
-                class="img-link"></a>
-    </div> 
+    <div id="center-categories">
+        <ul id="categories">
+            <li>
+                <a href="{% url 'view_drink_page' %}"><img class="img-link" id="drinks"
+                            src="https://as1.ftcdn.net/v2/jpg/06/17/39/64/1000_F_617396487_8IgWTyb6JIeSoqTVpl0NXT3lW0JyBWOh.jpg"
+                            alt=""></a>
+            </li>
+            <li>
+                <a href="{% url 'view_sauces_page' %}"><img class="img-link" id="sauces"
+                            src="https://as1.ftcdn.net/v2/jpg/01/66/45/02/1000_F_166450222_q738gQ0Du5fHjqhCs7PWi1yRjuWheQwL.jpg"
+                            alt=""></a>
+            </li>
+        </ul>
+    </div>
 </div>
 
 
