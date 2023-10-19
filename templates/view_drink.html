@@ -1,0 +1,97 @@
+{% extends 'base.html' %} {% block content %} {% load crispy_forms_tags %}
+
+<div class="masthead">
+    <div class="container">
+        <div class="row g-0">
+            <div class="col-md-6 masthead-text">
+                <h1 class="post-title">{{ drink.drink_name }}</h1>
+                <p class="post-subtitle">
+                    Written By: {{ drink.written_by }} <hr class="hr-trans"> 
+                </p>
+                <p class="post-subtitle">
+                    Posted On: {{ drink.posted_on }} <br>
+                    Updated On: {{ drink.edited_on }}
+                </p>
+            </div>
+
+            <div class="d-none d-md-block col-md-6 masthead-image">
+            {% if "placeholder" in drink.drinks_image.url %}
+                <img
+                src="https://as2.ftcdn.net/v2/jpg/01/07/93/25/1000_F_107932517_bRTDt5PCP4mOxlnsifzR6kXxkR3xi8QA.jpg"
+                width="100%">
+            {% else %}
+                <img src=" {{ drink.drinks_image.url }}" width="100%" height="auto">
+            {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+            <div id="bookmark-bar">
+                {% if user.is_authenticated %}
+                <a href="#" class="btn btn-bookmark">Bookmark Recipe</a>
+                <!-- bookmark- bug where no reverse match, but gets added to bookmarks-->
+                {% endif %}
+            </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+
+        <div class="col card mb-4 mt-3 left top">
+            <div class="card-body recipe-body">
+                <p class="recipe-headings">About: {{ drink.excerpt | safe }}</p>
+                <br>
+                <p class="recipe-headings"><i class="fa-regular fa-clock"></i> Total Time: {{ drink.drink_time | safe }}</p>
+                <br>
+                <p class="recipe-headings"><i class="fa-solid fa-blender"></i> Ingredients: {{ drink.ingredients | safe }}</p>
+                <br>
+                <p class="recipe-headings"><i class="fa-solid fa-shoe-prints"></i> Steps: {{ drink.drink_steps | safe }}</p>
+            </div>
+
+        <div class="row">
+            <div class="col-1 like-comm-sect">
+                <strong>
+                    {% if user.is_authenticated %}
+                    <form class="d-inline" action="{% url 'drink_like' drink.slug %}" method="POST">
+                        {% csrf_token %} {% if liked %}
+                        <button type="submit" name="blogpost_id" value="{{drink.slug}}" class="btn-like"><i
+                                class="fas fa-thumbs-up"></i></button>
+                        {% else %}
+                        <button type="submit" name="blogpost_id" value="{{drink.slug}}" class="btn-like"><i
+                                class="far fa-thumbs-up"></i></button>
+                        {% endif %}
+                    </form>
+                    {% else %}
+                    <span class="text-secondary"><i class="far fa-heart"></i></span>
+                    {% endif %}
+                    <span class="text-secondary like-count">{{ drink.number_of_likes }} </span>
+                </strong>
+            </div>
+        
+            <div class="col-1 like-comm-sect">
+                <strong>
+                    {% if user.is_authenticated %}
+                    <form class="d-inline" action="{% url 'drink_heart' drink.slug %}" method="POST">
+                        {% csrf_token %} {% if hearted %}
+                        <button type="submit" name="blogpost_id" value="{{drink.slug}}" class="btn-like"><i
+                                class="fas fa-heart"></i></button>
+                        {% else %}
+                        <button type="submit" name="blogpost_id" value="{{drink.slug}}" class="btn-like"><i
+                                class="far fa-heart"></i></button>
+                        {% endif %}
+                    </form>
+                    {% else %}
+                    <span class="text-secondary"><i class="far fa-heart"></i></span>
+                    {% endif %}
+                    <span class="text-secondary like-count">{{ drink.number_of_hearts }} </span>
+                </strong>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

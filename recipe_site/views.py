@@ -167,3 +167,52 @@ class DrinkList(generic.ListView):
     queryset = Drink.objects.filter(category=0).order_by("-posted_on")
     template_name = 'drinks.html'
     paginate_by = 6
+
+
+class ViewDrink(View):
+
+    def get(self, request, slug, *args, **kwargs):
+        queryset = Drink.objects.filter(category=0)
+        drink = get_object_or_404(queryset, slug=slug)
+        liked = False
+        hearted = False
+        if drink.likes.filter(id=self.request.user.id).exists():
+            liked = True
+        if drink.hearts.filter(id=self.request.user.id).exists():
+            hearted = True
+
+        return render(
+            request,
+            "view_drink.html",
+            {
+                "drink": drink,
+                "liked": liked,
+                "hearted": hearted,
+            },
+        )
+
+
+class DrinkLike(View):
+
+    def post(self, request, slug, *args, **kwargs):
+        drink = get_object_or_404(Drink, slug=slug)
+
+        if drink.likes.filter(id=request.user.id).exists():
+            drink.likes.remove(request.user)
+        else:
+            drink.likes.add(request.user)
+
+        return HttpResponseRedirect(reverse('view_drink', args=[slug]))
+
+
+class DrinkHeart(View):
+
+    def post(self, request, slug, *args, **kwargs):
+        drink = get_object_or_404(Drink, slug=slug)
+
+        if drink.hearts.filter(id=request.user.id).exists():
+            drink.hearts.remove(request.user)
+        else:
+            drink.hearts.add(request.user)
+
+        return HttpResponseRedirect(reverse('view_drink', args=[slug]))

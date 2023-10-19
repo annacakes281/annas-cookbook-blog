@@ -13,7 +13,11 @@ urlpatterns = [
     path('my-profile/', views.my_profile, name='profile'),
     path('search-recipes/', views.SearchRecipes.as_view(), name='search_recipes'),
     path('admin/recipe_site/post/add/', views.add_recipe, name='add_recipe'),
-    path('admin/recipe_site/comment/', views.manage_comments, name='manage_comments'),
+    path('admin/recipe_site/comment/',
+         views.manage_comments, name='manage_comments'),
     path('admin/recipe_site/tip/', views.manage_tips, name='manage_tips'),
     path('drinks/', views.DrinkList.as_view(), name='view_drink_page'),
+    path('view-drink/<slug:slug>/', views.ViewDrink.as_view(), name='view_drink'),
+    path('drink-like/<slug:slug>', views.DrinkLike.as_view(), name='drink_like'),
+    path('drink-heart/<slug:slug>', views.DrinkHeart.as_view(), name='drink_heart'),
 ]
