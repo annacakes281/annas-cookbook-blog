@@ -143,7 +143,7 @@
 
         <div class="col-md-4 card mb-4 mt-3">
             <div class="card-body comment-sect">
-            {% if user.is_superuser %}
+            {% if user.is_authenticated %}
                 <h3 class="commentform">Leave a comment: <i class="fa-regular fa-comment"></i></h3>
                 <p>Posting as: {{ user.username }}</p>
                 <form method="post" style="margin-top: 1.3em">

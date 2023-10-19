@@ -374,13 +374,13 @@ nav {
 
 @media screen and (max-width:540px) {
     .masthead {
-        margin-bottom: -14%;
+        margin-bottom: -8%;
     }
 }
 
 @media screen and (max-width:400px) {
     .masthead {
-        margin-bottom: -24%;
+        margin-bottom: -15%;
     }
 }
 
