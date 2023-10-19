@@ -16,6 +16,7 @@ import dj_database_url
 if os.path.isfile('env.py'):
     import env
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
@@ -30,8 +31,8 @@ SECRET_KEY = 'SECRET_KEY'
 X_FRAME_OPTIONS = "SAMEORIGIN"  # Needed for Summernote to run in deployment
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG = os.environ.get('DEBUG', False)  # add back in after
+# DEBUG = True
+DEBUG = os.environ.get('DEBUG', False)
 
 ALLOWED_HOSTS = ['8000-annacakes281-my-cookbook-ygn2p5f2uw.us2.codeanyapp.com',
                  'localhost',
@@ -113,7 +114,7 @@ WSGI_APPLICATION = 'cookbook.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
-}  # add this back for deployment or use development similar to todo settings
+}
 
 
 # Password validation
