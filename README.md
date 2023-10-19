@@ -36,6 +36,7 @@ The blog is aimed at anyone who enjoys cooking and is interested in trying a var
 <li>Django & Bootstrap</li>
 <li>Homepage</li>
 <li>Nav Bar</li>
+<li>Footer</li>
 <li>Search</li>
 <li>My Profile</li>
 <li>Accounts</li>
@@ -45,6 +46,8 @@ The blog is aimed at anyone who enjoys cooking and is interested in trying a var
 <li>Recipes for Everyone</li>
 <li>Bookmark Recipe</li>
 <li>Recipe Page</li>
+<li>Drinks Page</li>
+<li>Sauces Page</li>
 <li>Liking & Hearts</li>
 <li>Comments, Tips & Recommendations</li>
 <li>Contact Page</li>
@@ -117,7 +120,7 @@ There were a few different websites and blogs that I used for inspirations and f
 
 I really enjoyed using Django to create my blog, despite having some issues that I needed to think outside the box to fix. I used several different external libraries with Django to help create several features, such as [Cloundinary](https://cloudinary.com/) to store my images and media files externally, [Bootstrap](https://getbootstrap.com/) as a framework for further CSS design and [ElephantSQL](https://www.elephantsql.com/) as an external SQL database. I will further discuss the external libraries that were used in the <a href="#external-libraries">External Libraries</a> section.
 
-I would definetly use Django again for future projects and I would like to learn more about the different features involved to be able to create more complex projects in the future.
+I would definetly use Django again for future projects and I would like to learn more about the different features involved to be able to create more complex projects in the future. One of my main struggles was with the python testing, so I mainly carried out manual testing.
 
 I am very happy with the blog that I have designed and the features that I have included, and I look forward to implementing more in the future.
 
@@ -138,14 +141,19 @@ I created a view for the desktop and for mobile/tablet before deciding to implem
 <img src="readme_images/cookbook_blog_mob_tab.jpg">
 
 The inital design has changed from the finished design of the blog in a few ways:
-<strong>FINISH THIS SECTION WHEN ADDED FINAL SECTION OF BLOG IN!!</strong>
 
 - The nav bar is displayed at the top of the page with a brand name, with the different nav links and search bar, as well as motto 'Release your Kitchen Creations'
 - There is an about section on the main page at the top rather than in the footer
 - Main section of recipe posts that is pagniated rather than the inital idea sections
-- I decided to keep the 'Recipes for Everyone' section...(FINISH EXPLAINING WHEN SECTION ADDED!!)
+- I decided to keep the 'Recipes for Everyone' section with two different categories for now:
+- - Drinks - which has its own model.
+  - Sauces - which uses the post model.
 
-<strong>ADD IMAGE OF WEBSITE</strong>
+<em>Homepage View 1</em>
+<img src="readme_images/homepage_1.jpg">
+
+<em>Homepage View 2</em>
+<img src="readme_images/homepage_2.jpg">
 
 ## **Agile Development**
 
@@ -208,10 +216,11 @@ The homepage is the mainpage where a user lands on when going to the blog. There
 - The navigation bar where the logo sits, several navigation links that change depending whether a user is 'autenticated' or a 'superuser', my profile page, a search bar, and a motto. This becomes collapsable when viewed on smaller screens.
 - About section that has a small paragraph about the blog, as well as a 'add new recipe' button that is only visible if the user is a 'superuser'.
 - The recipe view where the user can see all the posts of the recipes. A photo, the author, the title, date posted, number of likes and number of hearts can be seen. This view is also paginated.
-- THE RECIPE FOR EVERYONE SECTION WRITE ABOUT ONCE IMPLEMENTED
+- Recipes for Everyone section which has two categories that a user can click on which will take them to a new page to view the different posts in relation to these.
 - The footer where there is a link to a contact page, as well as a small section to socials.
 
-<img src="">
+<em>Cookbook Homepage</em>
+<img src="readme_images/homepage_1.jpg">
 
 ### **_Nav Bar_**
 
@@ -222,23 +231,37 @@ The purpose of the nav bar is for users to be able to navigate to different page
 - When a user is not logged in they can see 'Register' and 'Login' in the navbar, which will take the user to the different accounts side, and when a user is logged in they can see the 'Logout' option (further details about <a href="#accounts">Accounts</a> can be viewed here).
 - There is a 'Search' bar in the navbar as well that users can learch for recipes or ingredients that they want to see (this is further discussed in the <a href="#search">Search</a> section).
 
-<img src=""> <em>The navbar when logged out/not signed in/registered</em>
-<img src=""> <em>The navbar when an admin/superuser</em>
-<img src=""> <em>The navbar when a regular user</em>
+<em>The navbar when logged out/not signed in/registered</em>
+<img src="readme_images/navbar_loggedout.jpg">
+
+<em>The navbar when an admin/superuser inlcuding motto</em>
+<img src="readme_images/navbar_admin.jpg">
+
+<em>The navbar when a regular user</em>
+<img src="readme_images/navbar_user.jpg">
+
+### **_Footer_**
+
+The footer is displayed at the bottom of the page and is where the user is able to access the contact form and find the social links.
+
+<em>Footer</em>
+<img src="readme_images/footer.jpg">
 
 ### **_Search_**
 
-The search bar allows users to search for recipes by 'name' or 'ingredient'. The user can either press enter to search or click on the button and this will take users to a 'search results' page displaying all the results. If a user doesn't type anything and just searches it will display all the posts avaliable. The search bar makes it easier if a user is looking for a specific recipe or ingredient to use.
+The search bar allows users to search for recipes and drinks by 'name' or 'ingredient'. The user can either press enter to search or click on the button and this will take users to a 'search results' page displaying all the results. If a user doesn't type anything and just searches it will display all the recipe posts avaliable. The search bar makes it easier if a user is looking for a specific recipe or ingredient to use.
 
-<img src=""> <em>Search bar</em>
-<img src=""> <em>Search bar results 1</em>
-<img src=""> <em>Search bar results 2</em>
+<em>Search bar</em> <img src="readme_images/search_bar.jpg">
+
+<em>Search results for 'Pizza'</em>
+<img src="readme_images/search_results.jpg">
 
 ### **_My Profile_**
 
-The 'My Profile' page can only be accessed if a user is logged into the blog. This page will display any recipes that a user has bookmarked. This makes it easy for users to find what recipes are their favourites.
+The 'My Profile' page can only be accessed if a user is logged into the blog. This page will display any recipes that a user has bookmarked. This makes it easy for users to find what recipes and drinks are their favourites.
 
-<img src=""> <em>My Profile</em>
+<em>My Profile</em>
+<img src="readme_images/myprofile.jpg">
 
 ### **_Accounts_**
 
@@ -248,49 +271,71 @@ There are three different account pages that a user can see on the blog. If they
 - The sign in page will allow already registered users to sign in with their username and password, also having the 'remember me' option. At this current moment in time there is no 'forgot password' feature implemented. Once a user has logged in, they will be redirected back to the homepage.
 - The logout page will take users to a page where they can 'signout' of the blog. Once they have signed out, the page will be redirected back to the homepage.
 
-<img src=""> <em>Register Page</em>
-<img src=""> <em>Sign in Page</em>
-<img src=""> <em>Logout Page</em>
+<em>Register Page</em>
+<img src="readme_images/signup.jpg">
+
+<em>Sign in Page</em>
+<img src="readme_images/signin.jpg">
+
+<em>Logout Page</em>
+<img src="readme_images/signout.jpg">
 
 ### **_Admin_**
 
-The admin page is a view that is provided by Django. I have decided to implement a quick way to access this page in the nav bar so that 'superusers' also known as 'admins' can easily gain access to the admin side. As an admin there are several different things that can be viewed and done from this page, making it an important page to be able to access and view.
+The admin page is a view that is provided by Django. I have decided to implement a quick way to access this page in the nav bar so that 'superusers' also known as 'admins' can easily gain access to the admin side. As an admin there are several different things that can be viewed and done from this page, making it an important page to be able to access and view. It is important to note that the Admin page does not load properly when deployed but admins are still able to use it.
 
 - Admins are able to see any recent actions that were made.
 - Admins are able to see 'email address' associated with accounts, as well as add and make any changes.
 - Admins are able to see 'Users' and 'Groups. The 'User' page will show the admins all of the current website users, as well as whether they are an admin or not. They also have the ability to view and edit user details. It is important to note that password data is not stored.
 - Admins are able to see the Django Summernote 'Attachments' which are any of the images used on the recipe posts
-- Admins are able to see and manage the comments, tips, and posts on the blog at ease. From the Post page, admins are able to add new blog posts easily. Within the comments and tips pages, admins are able to remove comments if needed. There is also an easy search feature across these pages to easily find what the admin may be looking for.
+- Admins are able to see and manage the comments, tips, and posts on the blog at ease. From the Post and Drink pages, admins are able to add new blog posts easily. Within the comments and tips pages, admins are able to remove comments if needed. There is also an easy search feature across these pages to easily find what the admin may be looking for.
 - Admins are able to view and edit 'Sites'.
 - Admins are able to view and edit 'social accounts' associated with the blog.
+- Note 'testuser' was a testuser for test purposes.
+- Note that the user 'JasmineKitty' is a test user I created for the purpose of liking and commenting.
 
-<img src=""> <em>Main Admin View</em>
-<img src=""> <em>Post View</em>
-<img src=""> <em>Users View</em>
+<em>Main Admin View</em>
+<img src="readme_images/admin_view.jpg">
+
+<em>Post View</em>
+<img src="readme_images/post_admin_view.jpg">
+
+<em>Comment View</em>
+<img src="readme_images/comment_admin_view.jpg">
+
+<em>Users View</em>
+<img src="readme_images/user_admin_view.jpg">
 
 ### **_Post New Recipe_**
 
-The 'Add New Recipe' is at the bottom of the about section and is only displayed of the user is an 'admin/superuser'. When clicked it will take the user directly to the 'Post New Recipe' page on the admin pannel. I included this as a quick and easy way to be able to add new recipes to the blog.
+The 'Add New Recipe' is at the bottom of the about section and is only displayed of the user is an 'admin/superuser'. When clicked it will take the user directly to the 'Post New Recipe' page on the admin pannel. I included this as a quick and easy way to be able to add new recipes to the blog. This is also displayed on the 'Drinks' page with the same parameters.
 
-<img src=""> <em>With Admin Logged on</em>
-<img src=""> <em>Without Admin Logged on</em>
+<em>With Admin Logged on</em>
+<img src="readme_images/add_new.jpg">
+
+<em>Without Admin Logged on</em>
+<img src="readme_images/about_post_new.jpg">
 
 ### **_Recipe View_**
 
-On the homepage page all the recipes that are posted are displayed with the newest displaying first. The view is pagniated and once there is more than (3 or 6 EDIT THIS ONCE COMPLETED HOME PAGE) it will condense and a button will appear to go to the 'Next' or 'Prev' page.
+On the homepage page all the recipes that are posted are displayed with the newest displaying first. The view is pagniated and once there is more than 6 it will condense and a button will appear to go to the 'Next' or 'Prev' page.
 
 - Users can see the post itself with the finished photo of the recipe that the post is crating, with the author name displayed in the photo. If no photo is provided when adding the post, then a placeholder photo will be displayed instead.
 - The name of the recipe is displyed and this is what users will click on to go to the recipe post.
 - The date the recipe was posted on is displayed so that users can see when the recipe was posted on, as well as making it easy to order the recipes.
 - The total 'like' and 'heart' count is also displayed so that users can see the popularity of a recipe.
 
-<img src=""> <em>Recipe Homepage View</em>
+<em>Recipe Homepage View</em>
+<img src="readme_images/recipe_view_hp.jpg">
 
 ### **_Recipes For Everyone_**
 
-- photo of homepage and when clicked on recipe
-- purpose and what it does
-- TO CREATE THIS SECTION!!!
+The 'Recipes for Everyone' section is below the main blog posts and currently contains two categories 'drinks' and 'sauces'. The purpose of this was to add more functionality and to separate the recipies into their own pages.
+
+- The images are clickable and will take the user to that page - currently there is only a Adobe Stock photo as I do not have any personal photos for these categories.
+
+<em>Recipes for Everyone</em>
+<img src="readme_images/recipes_for_everyone.jpg">
 
 ### **_Bookmark Recipe_**
 
@@ -313,30 +358,56 @@ When a user clicks onto a recipe from the homepage, it will take them to a recip
 - The bottom of the page has the 'Comment' and 'Tips and Recommendations' section where a user can leave a comment and tip/recommendation on the page. A user must be signed in to leave a comment and tip/recommendation, but they can view them being logged out. These sections were also created using models.
   - As an 'admin/superuser' there is a button that appears that will take them directly to the manage sections for the 'comment' and 'tips' so that they can directly manage them.
 
-<img src=""> <em>Recipe View</em>
+<em>Recipe View</em>
+<img src="readme_images/recipe_step_view.jpg">
+
+### **_Drinks Page_**
+
+When a user clicks onto a drink image on the homepage, it will take them to a new page where they can select a recipe from the drink page. This will take them to a recipe page where they can view the ingredients and steps to create the recipe themselves.
+
+- This page works pretty similar to the 'Recipe Page', however it has a different model instead.
+- The 'drink' recipies have it's own category to get it to show on this page.
+
+### **_Sauces Page_**
+
+When a user clicks onto a sauces image on the homepage, it will take them to a new page where they can select a recipe from the sauce page. This will take them to a recipe page where they can view the ingredients and steps to create the recipe themselves.
+
+- This page uses the same model as the recipe view, however it has a different category to get it to show on this page.
+
+<em>Sauces View</em>
+<img src="readme_images/sauces_page.jpg">
 
 ### **_Liking & Hearts_**
 
-The 'liking' and 'hearts' feature is something for users to interact with, to be able to react to a recipe. Users must be logged in to be able to react to a post. Once a user has liked or hearted (they can do both if they want) it will add a number count, which is displayed on the recipe page, as well as on the homepage. To unlike and unheart users just need to click the buttons again. This features makes the recipe posts more interactive for the users.
+The 'liking' and 'hearts' feature is something for users to interact with, to be able to react to a recipe. Users must be logged in to be able to react to a post. Once a user has liked or hearted (they can do both if they want) it will add a number count, which is displayed on the recipe page, as well as on the homepage. To unlike and unheart users just need to click the buttons again. This features makes the recipe posts more interactive for the users. This feature is also on the drink recipe pages.
 
-<img src=""> <em>When Liked/Hearted</em>
-<img src=""> <em>When Logged out</em>
+<em>When Liked/Hearted</em>
+
+<img src="readme_images/hearted.jpg">
+<img src="readme_images/liked.jpg">
 
 ### **_Comments, Tips & Recommendations_**
 
-Users have the ability to leave a 'comment' as well as a 'recommendation and tip' if they are logged in, and this will be displayed at the bottom of the recipe. This allows for user input as well as user suggestions. Any comments and tips/recommendations will be displayed with the oldest at the top.
+Users have the ability to leave a 'comment' as well as a 'recommendation and tip' if they are logged in, and this will be displayed at the bottom of the recipe. This allows for user input as well as user suggestions. Any comments and tips/recommendations will be displayed with the oldest at the top. This feature is not yet avaliable on the drink recipe posts.
 
 Admins have the ability to see a 'Manage' button for each section so that they can remove any comments they they deem necessary.
 
-<img src=""> <em>Comment Area</em>
-<img src=""> <em>Tips & Recommendations Area</em>
+<em>Comment, Tips & Recommendations when logged in</em>
+<img src="readme_images/comment_loggedin.jpg">
+
+<em>Comment, Tips & Recommendations when logged out</em>
+<img src="readme_images/comment_loggedout.jpg">
 
 ### **_Contact Page_**
 
 The purpose of the contact page is so that users are able to send recipe suggestions to the owner. They will need to fill out a form, which users JavaScript to send to form back to the users email. Once the form has been submitted a popup box appears letting users know whether the request has been successful or not. The email then appears in my spare email box so that I can see what recipe ideas that users may have. The contact form uses an external feature called [Email JS](https://www.emailjs.com/), which will be discussed further in the <a href="#external-libraries">External Libraries</a> section.
 
-<img src=""> <em>Contact Page</em>
-<img src=""> <em>When Submitted</em>
+<em>Contact Page</em>
+<img src="readme_images/contact_page.jpg">
+
+<em>When Submitted</em>
+
+<img src="readme_images/when_submitted.jpg">
 
 ### **_Optimisations_**
 
@@ -346,9 +417,11 @@ To help with optimisations foe the blog, I used the Bootstrap framework classes 
 - The entire homepage also becomes more condensed the smaller the viewport is and then becomes more responsive for a better optimised view for users on smaller screens.
 - Each of the pages will also follow suite and become more responsive depending on the screensize
 
-<img src=""> <em>Nav Bar Collapse</em>
-<img src=""> <em>Homepage Optimised</em>
-<img src=""> <em>Recipe Page Optimised</em>
+<em>Nav Bar Collapse</em>
+<img src="readme_images/navbar_optimised.jpg">
+
+<em>Homepage Optimised</em>
+<img src="readme_images/hp_optimised.jpg">
 
 ## **Django**
 
