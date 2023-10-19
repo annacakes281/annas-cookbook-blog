@@ -127,15 +127,17 @@ def my_profile(request):
     return render(request, 'my_profile.html', {'new': new})
 
 
-def add_bookmark(request, id):
-    post = get_object_or_404(Post, id=id)
+class AddBoomark(View):
 
-    if post.bookmarks.filter(id=request.user.id).exists():
-        post.bookmarks.remove(request.user)
-    else:
-        post.bookmarks.add(request.user)
+    def post(self, request, slug, *args, **kwargs):
+        post = get_object_or_404(Post, slug=slug)
 
-    return HttpResponseRedirect(reverse('view_recipe'))
+        if post.bookmarks.filter(id=request.user.id).exists():
+            post.bookmarks.remove(request.user)
+        else:
+            post.bookmarks.add(request.user)
+
+        return HttpResponseRedirect(reverse('view_recipe', args=[slug]))
 
 
 def add_recipe(request):

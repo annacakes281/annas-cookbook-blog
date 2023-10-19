@@ -31,8 +31,13 @@
     <div class="row">
             <div id="bookmark-bar">
                 {% if user.is_authenticated %}
-                <a href="{% url 'add_bookmark' post.id %}" class="btn btn-bookmark">Bookmark Recipe</a>
-                <!-- bookmark- bug where no reverse match, but gets added to bookmarks-->
+                <form class="d-inline" action="{% url 'add_bookmark' post.slug %}" method="POST">
+                    {% csrf_token %} {% if bookmarked %}
+                    <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn btn-bookmark">Bookmark Recipe</button>
+                    {% else %}
+                    <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn btn-bookmark">Bookmark Recipe</i></button>
+                    {% endif %}
+                </form>
                 {% endif %}
             </div>
     </div>
