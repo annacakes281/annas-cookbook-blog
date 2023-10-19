@@ -127,6 +127,12 @@ nav {
     margin-top: 2%;
 }
 
+.img-link {
+    height: 75%;
+    width: 25%;
+}
+
+
 /* recipe view */
 
 .masthead {

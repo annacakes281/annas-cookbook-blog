@@ -1,0 +1,86 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="container-fluid">
+  <div class="row">
+    <h1 class="text-center about-title">Drinks Page</h1>
+    <hr class="hr-trans" />
+    <p class="text-center" id="about">
+      This page contains all the drink recipies I have tried and made!<br>
+      I hope you enjoy!
+    </p>
+    <div class="text-center">
+      {% if user.is_superuser %}
+      <a href="{% url 'add_recipe' %}"
+        ><button id="add-new">Add New Recipe</button></a
+      >
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<hr class="hr-trans" />
+
+<div class="container-fluid">
+  <div class="row">
+    <h1 class="text-center recipe-title">My Recipe Posts</h1>
+
+    <div class="col-12 mt-3 left">
+      <div class="row">
+        {% for drink in drink_list %}
+        <div class="col-md-4">
+          <div class="card mb-4">
+            <div class="card-body">
+              <div class="image-container">
+                {% if "placeholder" in drink.drinks_image.url %}
+                <img
+                  class="card-img-top"
+                  src="https://as2.ftcdn.net/v2/jpg/01/07/93/25/1000_F_107932517_bRTDt5PCP4mOxlnsifzR6kXxkR3xi8QA.jpg"
+                />
+                {% else %}
+                <img class="card-img-top" src=" {{ drink.drink_image.url }}" />
+                {% endif %}
+
+                <div class="image-flash">
+                  <p class="author">Author: {{ drink.written_by }}</p>
+                </div>
+              </div>
+            </div>
+
+
+            <hr />
+
+            <p class="card-text text-muted h6">
+              {{ drink.posted_on}} <i class="far fa-thumbs-up"></i>
+              {{ drink.number_of_likes }}
+              <i class="far fa-heart"></i> {{ drink.number_of_hearts }}
+            </p>
+          </div>
+        </div>
+        {% if forloop.counter|divisibleby:3 %}
+        <div class="row">{% endif %} {% endfor %}</div>
+      </div>
+    </div>
+  </div>
+
+  {% if is_paginated %}
+  <nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+      {% if page_obj.has_previous %}
+      <li>
+        <a href="?page={{ page_obj.previous_page_number }}" class="page-link"
+          >&laquo; PREV</a
+        >
+      </li>
+      {% endif %} {% if page_obj.has_next %}
+      <li>
+        <a href="?page={{ page_obj.next_page_number }}" class="page-link"
+          >NEXT &raquo;</a
+        >
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
+  {% endif %}
+</div>
+
+{% endblock %}

@@ -17,7 +17,7 @@
             <a href="{% url 'add_recipe' %}"><button id="add-new">Add New Recipe</button></a>
             {% endif %}
         </div>
-  </div>
+    </div>
 </div>
 
 <hr class="hr-trans">
@@ -81,5 +81,20 @@
     </nav>
     {% endif %}
 </div>
+
+
+<div class="row">
+    <h1 class="text-center about-title">Recipes For Everyone</h1>
+    <hr class="hr-trans">
+    <p class="text-center" id="about">
+            Select...
+    </p>
+
+    <div class="text-center">
+        <p class="text-center">Drinks</p>
+        <a href="{% url 'view_drink_page' %}"><img src="https://as1.ftcdn.net/v2/jpg/06/17/39/64/1000_F_617396487_8IgWTyb6JIeSoqTVpl0NXT3lW0JyBWOh.jpg" alt="" class="img-link"></a>
+    </div> 
+</div>
+
 
 {% endblock %}

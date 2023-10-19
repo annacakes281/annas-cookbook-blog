@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.http import HttpResponseRedirect
 from django.views import generic, View
 from django.db.models import Q
-from .models import Post
+from .models import Post, Drink
 from .forms import CommentForm, TipForm
 
 
@@ -160,3 +160,10 @@ class SearchRecipes(generic.ListView):
             Q(recipe_name__icontains=query) | Q(ingredients__icontains=query)
         )
         return post_list
+
+
+class DrinkList(generic.ListView):
+    model = Drink
+    queryset = Drink.objects.filter(category=0).order_by("-posted_on")
+    template_name = 'drinks.html'
+    paginate_by = 6
