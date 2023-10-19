@@ -1,59 +1,83 @@
 {% extends "base.html" %} {% block content %}
 <!-- edit this page -->
 <div class="container-fluid">
-    <div class="row">
-        <h1 class="text-center recipe-title">My Profile</h1>
-        <hr class="hr-trans">
-        <p class="text-center" id="about">
-        Welcome to your profile where you can see your saved recipes!
-        </p>
-    </div>
-
-    {% for post in recipe %}
-    <div class="col-md-4">
-        <div class="card mb-4">
-            <div class="card-body">
-                <div class="image-container">
-                    {% if "placeholder" in post.recipe_image.url %}
-                    <img class="card-img-top"
-                    src="https://as2.ftcdn.net/v2/jpg/02/65/58/29/1000_F_265582946_D57tH8k6p377flQrhptz93w9bK9CN6AR.jpg">
-                    {% else %}
-                    <img class="card-img-top" src=" {{ post.recipe_image.url }}">
-                    {% endif %}
-                    <div class="image-flash">
-                        <p class="author">Author: {{ post.written_by }}</p>
-                    </div>
-                </div>
-
-                <a href="{% url 'view_recipe' post.slug %}" class="post-link">
-                    <h2 class="card-title recipe-title">{{ post.recipe_name }}</h2></a>
-            </div>
-        </div>
-    </div>
-    {% endfor %}
-
-    {% for drink in drinks %}
-    <div class="col-md-4">
-        <div class="card mb-4">
-            <div class="card-body">
-                <div class="image-container">
-                    {% if "placeholder" in drink.drinks_image.url %}
-                    <img class="card-img-top"
-                        src="https://as2.ftcdn.net/v2/jpg/01/07/93/25/1000_F_107932517_bRTDt5PCP4mOxlnsifzR6kXxkR3xi8QA.jpg">
-                    {% else %}
-                    <img class="card-img-top" src=" {{ drink.drinks_image.url }}">
-                    {% endif %}
-                    <div class="image-flash">
-                        <p class="author">Author: {{ drink.written_by }}</p>
-                    </div>
-                </div>
-    
-                <a href="{% url 'view_drink' drink.slug %}" class="post-link">
-                    <h2 class="card-title recipe-title">{{ drink.drink_name }}</h2>
-                </a>
-            </div>
-        </div>
-    </div>
-    {% endfor %}
+  <div class="row">
+    <h1 class="text-center recipe-title">My Profile</h1>
+    <hr class="hr-trans" />
+    <p class="text-center" id="about">
+      Welcome to your profile where you can see your saved recipes and drinks!
+    </p>
+  </div>
 </div>
+
+<div class="container-fluid">
+    <div class="row">
+        <h1 class="text-center recipe-title">Bookmarked Recipes</h1>
+        <div>
+            <ul class="bookmarked">
+                <li>
+                    {% for post in recipe %}
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="image-container">
+                                    {% if "placeholder" in post.recipe_image.url %}
+                                    <img class="card-img-top"
+                                        src="https://as2.ftcdn.net/v2/jpg/02/65/58/29/1000_F_265582946_D57tH8k6p377flQrhptz93w9bK9CN6AR.jpg">
+                                    {% else %}
+                                    <img class="card-img-top" src=" {{ post.recipe_image.url }}">
+                                    {% endif %}
+                                    <div class="image-flash">
+                                        <p class="author">Author: {{ post.written_by }}</p>
+                                    </div>
+                                </div>
+            
+                                <a href="{% url 'view_recipe' post.slug %}" class="post-link">
+                                    <h2 class="card-title recipe-title">{{ post.recipe_name }}</h2>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <h1 class="text-center recipe-title">Bookmarked Drinks</h1>
+        <div>
+            <ul class="bookmarked">
+                <li>
+                    {% for drink in drinks %}
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="image-container">
+                                    {% if "placeholder" in drink.drinks_image.url %}
+                                    <img class="card-img-top"
+                                        src="https://as2.ftcdn.net/v2/jpg/01/07/93/25/1000_F_107932517_bRTDt5PCP4mOxlnsifzR6kXxkR3xi8QA.jpg">
+                                    {% else %}
+                                    <img class="card-img-top" src=" {{ drink.drinks_image.url }}">
+                                    {% endif %}
+                                    <div class="image-flash">
+                                        <p class="author">Author: {{ drink.written_by }}</p>
+                                    </div>
+                                </div>
+            
+                                <a href="{% url 'view_drink' drink.slug %}" class="post-link">
+                                    <h2 class="card-title recipe-title">{{ drink.drink_name }}</h2>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+ 
 {% endblock %}
